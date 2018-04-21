@@ -14,5 +14,9 @@
 //pod
 #import "Masonry.h"
 
+//基本类
+#import "BaseNavigationController.h"
+#import "BaseViewController.h"
+
 
 #endif /* PrefixHeader_pch */

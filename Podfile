@@ -8,5 +8,7 @@ use_frameworks!
   pod 'Reachability'
   pod 'AFNetworking'
   pod 'MBProgressHUD'
+  pod 'YYWebImage'
+  pod 'YYImage/WebP'
 
 end
