@@ -13,10 +13,10 @@
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 //pod
 #import "Masonry.h"
+#import <YYWebImage/YYWebImage.h>
 
 //基本类
 #import "BaseNavigationController.h"
 #import "BaseViewController.h"
-
 
 #endif /* PrefixHeader_pch */

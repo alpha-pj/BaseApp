@@ -29,18 +29,18 @@
     [self setTabBarItem:homeNavi.tabBarItem
                   title:@"首页"
               titleFont:[UIFont systemFontOfSize:13.0f]
-          selectedImage:@"i_tab_home_selected"
+          selectedImage:[YYImage yy_imageWithColor:[UIColor redColor] size:CGSizeMake(30, 30)]
      selectedTitleColor:[UIColor redColor]
-            normalImage:@"i_tab_home_normal"
+            normalImage:[YYImage yy_imageWithColor:[UIColor grayColor] size:CGSizeMake(30, 30)]
        normalTitleColor:[UIColor grayColor]];
     
     
     [self setTabBarItem:myNaiv.tabBarItem
                   title:@"我的"
               titleFont:[UIFont systemFontOfSize:13.0f]
-          selectedImage:@"i_tab_blog_selected"
+          selectedImage:[YYImage yy_imageWithColor:[UIColor redColor] size:CGSizeMake(30, 30)]
      selectedTitleColor:[UIColor redColor]
-            normalImage:@"i_tab_blog_normal"
+            normalImage:[YYImage yy_imageWithColor:[UIColor grayColor] size:CGSizeMake(30, 30)]
        normalTitleColor:[UIColor grayColor]];
     
     // 把子控制器添加到UITabBarController
@@ -51,14 +51,14 @@
 - (void)setTabBarItem:(UITabBarItem *)tabbarItem
                 title:(NSString *)title
             titleFont:(UIFont *)titleFont
-        selectedImage:(NSString *)selectedImage
+        selectedImage:(UIImage *)selectedImage
    selectedTitleColor:(UIColor *)selectColor
-          normalImage:(NSString *)unselectedImage
+          normalImage:(UIImage *)normalImage
      normalTitleColor:(UIColor *)unselectColor
 {
     
     // 图片
-    tabbarItem = [tabbarItem initWithTitle:title image:[[UIImage imageNamed:unselectedImage]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:selectedImage]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    tabbarItem = [tabbarItem initWithTitle:title image:[normalImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[selectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     
     // 未选中字体颜色
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:unselectColor,NSFontAttributeName:titleFont} forState:UIControlStateNormal];
