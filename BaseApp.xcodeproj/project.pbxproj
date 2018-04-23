@@ -95,6 +95,13 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
+		DC372777208E0BE70021E402 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		DCFA48FF2089808B00AC8832 = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +127,7 @@
 				DCFA492B208B22F000AC8832 /* BassClass */,
 				DCFA4936208B24FE00AC8832 /* Home */,
 				DCFA4935208B24FE00AC8832 /* My */,
+				DC372777208E0BE70021E402 /* Category */,
 				DCFA49222089D6EE00AC8832 /* Config */,
 				DCFA49242089D96400AC8832 /* Other */,
 			);

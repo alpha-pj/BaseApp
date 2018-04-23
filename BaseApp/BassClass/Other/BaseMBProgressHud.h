@@ -50,4 +50,19 @@ typedef NS_ENUM(NSUInteger, PositionType) {
  */
 + (void)showMBHudWithText:(NSString *)text view:(UIView *)view position:(PositionType)type;
 
+
+/**
+ 显示加载中
+
+ @param view 转圈的父视图
+ */
++ (void)showMBHudWithView:(UIView *)view;
+
+/**
+ 隐藏加载中
+
+ @param view 转圈的父视图
+ */
++ (void)hideMBHudWithView:(UIView *)view;
+
 @end
