@@ -30,8 +30,7 @@
 }
 
 - (void)buttonAction {
-    MyBaseController *vc = [[MyBaseController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+    [BaseMBProgressHud showMBHudWithText:@"home" position:(PositionTypeBottom)];
 }
 
 - (void)didReceiveMemoryWarning {

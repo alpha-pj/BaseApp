@@ -12,11 +12,12 @@
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 //pod
-#import "Masonry.h"
+#import <Masonry/Masonry.h>
 #import <YYWebImage/YYWebImage.h>
 
 //基本类
 #import "BaseNavigationController.h"
 #import "BaseViewController.h"
+#import "BaseMBProgressHud.h"
 
 #endif /* PrefixHeader_pch */
