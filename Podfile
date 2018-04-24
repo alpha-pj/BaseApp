@@ -5,7 +5,6 @@ target 'BaseApp' do
 use_frameworks!
 
   pod 'Masonry'
-  pod 'Reachability'
   pod 'AFNetworking'
   pod 'MBProgressHUD'
   pod 'YYWebImage'
