@@ -11,12 +11,12 @@
 
 @implementation BaseMBProgressHud
 
-#pragma mark 显示提示文本1秒(window上)
+#pragma mark 显示提示文本n秒(window上)
 + (void)showMBHudWithText:(NSString *)text {
     [BaseMBProgressHud showMBHudWithText:text view:nil];
 }
 
-#pragma mark 显示提示文本1秒(view上)
+#pragma mark 显示提示文本n秒(view上)
 + (void)showMBHudWithText:(NSString *)text view:(UIView *)view {
     if (!view) {
         view = [UIApplication sharedApplication].keyWindow;
@@ -31,7 +31,14 @@
     [view addSubview:hud];
     
     [hud showAnimated:YES];
-    [hud hideAnimated:YES afterDelay:1.0f];
+    
+    CGFloat delay = 1.0f;
+    if (text.length > 20) {
+        delay = 3.0f;
+    } else if (text.length > 10) {
+        delay = 2.0f;
+    }
+    [hud hideAnimated:YES afterDelay:delay];
 }
 
 /***************************/
@@ -75,7 +82,14 @@
     [view addSubview:hud];
     
     [hud showAnimated:YES];
-    [hud hideAnimated:YES afterDelay:1.0f];
+    
+    CGFloat delay = 1.0f;
+    if (text.length > 20) {
+        delay = 3.0f;
+    } else if (text.length > 10) {
+        delay = 2.0f;
+    }
+    [hud hideAnimated:YES afterDelay:delay];
 }
 
 /*****************/

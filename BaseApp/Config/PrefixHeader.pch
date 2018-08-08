@@ -20,4 +20,14 @@
 #import "BaseViewController.h"
 #import "BaseMBProgressHud.h"
 
+//类目
+#import "UIColor+Category.h"
+#import "NSArray+SafeIndex.h"
+#import "NSMutableArray+SafeAdd.h"
+#import "UIButton+CreateButton.h"
+#import "UIView+Frame.h"
+#import "NSString+IsBlackStr.h"
+#import "NSString+NowTimeInterval.h"
+#import "NSDate+DateFormatter.h"
+
 #endif /* PrefixHeader_pch */

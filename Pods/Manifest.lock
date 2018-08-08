@@ -16,6 +16,8 @@ PODS:
     - AFNetworking/NSURLSession
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
+  - MJRefresh (3.1.15.3)
+  - SAMKeychain (1.5.3)
   - YYCache (1.0.4)
   - YYImage (1.0.4):
     - YYImage/Core (= 1.0.4)
@@ -30,6 +32,8 @@ DEPENDENCIES:
   - AFNetworking
   - Masonry
   - MBProgressHUD
+  - MJRefresh
+  - SAMKeychain
   - YYImage/WebP
   - YYWebImage
 
@@ -38,6 +42,8 @@ SPEC REPOS:
     - AFNetworking
     - Masonry
     - MBProgressHUD
+    - MJRefresh
+    - SAMKeychain
     - YYCache
     - YYImage
     - YYWebImage
@@ -46,10 +52,12 @@ SPEC CHECKSUMS:
   AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
+  MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
+  SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 6192eb4a2c44437af273df653d2d850ef0cb0e9c
+PODFILE CHECKSUM: b9444d82c6110e105eeddc318536fe96165ec477
 
 COCOAPODS: 1.5.0

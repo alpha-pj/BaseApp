@@ -9,5 +9,7 @@ use_frameworks!
   pod 'MBProgressHUD'
   pod 'YYWebImage'
   pod 'YYImage/WebP'
+  pod 'MJRefresh'
+  pod 'SAMKeychain'
 
 end
