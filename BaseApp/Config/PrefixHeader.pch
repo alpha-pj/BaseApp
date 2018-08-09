@@ -14,6 +14,10 @@
 //pod
 #import <Masonry/Masonry.h>
 #import <YYWebImage/YYWebImage.h>
+#import "UIImageView+WebCache.h"
+
+//宏
+#import "AppMacro.h"
 
 //基本类
 #import "BaseNavigationController.h"
