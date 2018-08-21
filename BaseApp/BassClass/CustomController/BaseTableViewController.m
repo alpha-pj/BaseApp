@@ -60,6 +60,8 @@ static NSString *cellId = @"tableViewCellId";
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.rowHeight = 10;
+    tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellId];
     [self.view addSubview:tableView];
     self.tableView = tableView;

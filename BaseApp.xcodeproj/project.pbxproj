@@ -46,6 +46,7 @@
 		DC0A1CEC211BEAD000E908EC /* WebP.sh in Resources */ = {isa = PBXBuildFile; fileRef = DC0A1CEA211BEACF00E908EC /* WebP.sh */; };
 		DC0A1CF0211BEB8E00E908EC /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0A1CEF211BEB8E00E908EC /* BaseTableViewController.m */; };
 		DC0A1CF3211BEE5D00E908EC /* BaseCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0A1CF2211BEE5D00E908EC /* BaseCollectionViewController.m */; };
+		DC0A1CF7211C1E0700E908EC /* BaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0A1CF6211C1E0700E908EC /* BaseRequest.m */; };
 		DC372776208DFF670021E402 /* BaseMBProgressHud.m in Sources */ = {isa = PBXBuildFile; fileRef = DC372775208DFF670021E402 /* BaseMBProgressHud.m */; };
 		DC37277B208F047F0021E402 /* BaseNetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = DC37277A208F047F0021E402 /* BaseNetWork.m */; };
 		DC7262D2211ACC7C00B462A4 /* BaseMJGifHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = DC7262D1211ACC7C00B462A4 /* BaseMJGifHeader.m */; };
@@ -172,6 +173,8 @@
 		DC0A1CEF211BEB8E00E908EC /* BaseTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
 		DC0A1CF1211BEE5D00E908EC /* BaseCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseCollectionViewController.h; sourceTree = "<group>"; };
 		DC0A1CF2211BEE5D00E908EC /* BaseCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionViewController.m; sourceTree = "<group>"; };
+		DC0A1CF5211C1E0700E908EC /* BaseRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseRequest.h; sourceTree = "<group>"; };
+		DC0A1CF6211C1E0700E908EC /* BaseRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseRequest.m; sourceTree = "<group>"; };
 		DC372774208DFF670021E402 /* BaseMBProgressHud.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseMBProgressHud.h; sourceTree = "<group>"; };
 		DC372775208DFF670021E402 /* BaseMBProgressHud.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseMBProgressHud.m; sourceTree = "<group>"; };
 		DC372779208F047F0021E402 /* BaseNetWork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseNetWork.h; sourceTree = "<group>"; };
@@ -413,6 +416,24 @@
 			path = CustomController;
 			sourceTree = "<group>";
 		};
+		DC0A1CF4211C1DEA00E908EC /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				DC0A1CF8211C230000E908EC /* AppRequest */,
+				DC372778208F045E0021E402 /* BaseNetWork */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		DC0A1CF8211C230000E908EC /* AppRequest */ = {
+			isa = PBXGroup;
+			children = (
+				DC0A1CF5211C1E0700E908EC /* BaseRequest.h */,
+				DC0A1CF6211C1E0700E908EC /* BaseRequest.m */,
+			);
+			path = AppRequest;
+			sourceTree = "<group>";
+		};
 		DC372772208DFE860021E402 /* System */ = {
 			isa = PBXGroup;
 			children = (
@@ -646,12 +667,12 @@
 			isa = PBXGroup;
 			children = (
 				DCFA49212089D6EE00AC8832 /* AppDelegate */,
-				DC372778208F045E0021E402 /* BaseNetWork */,
 				DCFA492B208B22F000AC8832 /* BassClass */,
 				DC372777208E0BE70021E402 /* Category */,
 				DCFA49222089D6EE00AC8832 /* Config */,
 				DCFA4936208B24FE00AC8832 /* Home */,
 				DCFA4935208B24FE00AC8832 /* My */,
+				DC0A1CF4211C1DEA00E908EC /* Request */,
 				DCFA49242089D96400AC8832 /* Other */,
 				DC0A1C7D211BE6F800E908EC /* Vendor */,
 			);
@@ -846,6 +867,7 @@
 				DC7263D9211AD5F500B462A4 /* NSString+IDFV.m in Sources */,
 				DC0A1CC9211BE98C00E908EC /* SDWebImageManager.m in Sources */,
 				DC7263A6211AD10100B462A4 /* UIView+Frame.m in Sources */,
+				DC0A1CF7211C1E0700E908EC /* BaseRequest.m in Sources */,
 				DC0A1CD8211BE98C00E908EC /* SDWebImageCoder.m in Sources */,
 				DC7263E4211AD5F500B462A4 /* NSString+IsBlackStr.m in Sources */,
 				DC7263E7211AD5F500B462A4 /* NSString+RemoveEscapeChar.m in Sources */,
