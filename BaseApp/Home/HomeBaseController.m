@@ -19,8 +19,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
-//    [imageV yy_setImageWithURL:[NSURL URLWithString:@"http://isparta.github.io/compare-webp/image/png_webp/webp_lossy75/2.webp"] options:(YYWebImageOptionProgressive)];
-    [imageV sd_setImageWithURL:[NSURL URLWithString:@"http://isparta.github.io/compare-webp/image/png_webp/webp_lossy75/2.webp"]];
+    [imageV yy_setImageWithURL:[NSURL URLWithString:@"http://isparta.github.io/compare-webp/image/png_webp/webp_lossy75/2.webp"] options:(YYWebImageOptionProgressive)];
+//    [imageV sd_setImageWithURL:[NSURL URLWithString:@"http://isparta.github.io/compare-webp/image/png_webp/webp_lossy75/2.webp"]];
     [self.view addSubview:imageV];
 }
 
