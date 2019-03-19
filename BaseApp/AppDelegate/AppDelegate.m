@@ -64,6 +64,17 @@
         [UITableView appearance].estimatedSectionHeaderHeight = 0;
         [UITableView appearance].estimatedSectionFooterHeight = 0;
     }
+    //解决ios12webView全屏播放视频返回后状态栏消失
+    [self videoPlayerFinishedToShowStatusBar];
+}
+
+//解决ios12webView全屏播放视频返回后状态栏消失
+- (void)videoPlayerFinishedToShowStatusBar {
+    if (@available(iOS 12.0, *)) {
+        [[NSNotificationCenter defaultCenter] addObserverForName:UIWindowDidBecomeKeyNotification object:self.window queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+            [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+        }];
+    }
 }
 
 @end
