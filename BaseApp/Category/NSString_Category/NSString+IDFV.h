@@ -10,10 +10,9 @@
 
 @interface NSString (IDFV)
 
-
 /**
  储存在钥匙串（Keychain）的IDFV
-
+ 
  @return IDFV
  */
 + (NSString *)getUniqueDeviceIdentifierAsString;
