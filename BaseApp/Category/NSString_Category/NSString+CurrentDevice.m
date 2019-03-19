@@ -10,11 +10,10 @@
 #import <sys/utsname.h>
 
 @implementation NSString (CurrentDevice)
-
-// 获取设备型号然后手动转化为对应名称
-+ (NSString *)deviceInfo
-{
-// 需要#import "sys/utsname.h"
+    
+    // 获取设备型号然后手动转化为对应名称
++ (NSString *)deviceInfo {
+    // 需要#import "sys/utsname.h"
     struct utsname systemInfo;
     uname(&systemInfo);
     NSString *deviceString = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
@@ -45,6 +44,10 @@
     if ([deviceString isEqualToString:@"iPhone10,5"])   return @"美版(Global/A1897)iPhone 8 Plus";
     if ([deviceString isEqualToString:@"iPhone10,3"])   return @"国行(A1865)、日行(A1902)iPhone X";
     if ([deviceString isEqualToString:@"iPhone10,6"])   return @"美版(Global/A1901)iPhone X";
+    if ([deviceString isEqualToString:@"iPhone11,2"])   return @"iPhone XS";
+    if ([deviceString isEqualToString:@"iPhone11,4"])   return @"iPhone XS Max";
+    if ([deviceString isEqualToString:@"iPhone11,6"])   return @"iPhone XS Max";
+    if ([deviceString isEqualToString:@"iPhone11,8"])   return @"iPhone XR";
     
     if ([deviceString isEqualToString:@"iPod1,1"])      return @"iPod Touch 1G";
     if ([deviceString isEqualToString:@"iPod2,1"])      return @"iPod Touch 2G";
@@ -100,5 +103,27 @@
     
     return deviceString;
 }
-
-@end
+    
++ (BOOL)isiPhoneX {
+    static BOOL isiPhoneX = NO;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+#if TARGET_IPHONE_SIMULATOR
+        // 获取模拟器所对应的 device model
+        NSString *model = NSProcessInfo.processInfo.environment[@"SIMULATOR_MODEL_IDENTIFIER"];
+#else
+        // 获取真机设备的 device model
+        struct utsname systemInfo;
+        uname(&systemInfo);
+        NSString *model = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+#endif
+        // 判断 device model 是否为 "iPhone10,3" 和 "iPhone10,6" 或者以 "iPhone11," 开头
+        // 如果是，就认为是 iPhone X
+        isiPhoneX = [model isEqualToString:@"iPhone10,3"] || [model isEqualToString:@"iPhone10,6"] || [model hasPrefix:@"iPhone11,"];
+    });
+    
+    return isiPhoneX;
+}
+    
+    @end

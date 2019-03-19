@@ -11,5 +11,8 @@
 @interface NSString (CurrentDevice)
 
 + (NSString*)deviceInfo;
+    
+//是否是iphonex系列
++ (BOOL)isiPhoneX;
 
 @end

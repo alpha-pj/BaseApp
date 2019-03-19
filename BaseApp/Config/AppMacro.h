@@ -52,7 +52,7 @@
 #define TOCK   Log(@"Time: %f", -[startTime timeIntervalSinceNow])
 
 // 判断是否是iPhone X
-#define iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+#define iPhoneX [NSString isiPhoneX]
 // 状态栏高度
 #define STATUS_BAR_HEIGHT (iPhoneX ? 44.f : 20.f)
 // 导航栏高度
