@@ -7,9 +7,11 @@
 //
 
 #import "AppDelegate.h"
-#import "BaseTabBarController.h"
+//#import "BaseTabBarController.h"
+#import "BaseCYLTabBarController.h"
+#import "BaseCYLPlusButton.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <UITabBarControllerDelegate>
 
 @end
 
@@ -53,7 +55,10 @@
 #pragma mark 初始化配置
 - (void)initializationConfiguration {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    BaseTabBarController *tabBarController = [[BaseTabBarController alloc] init];
+    [BaseCYLPlusButton registerPlusButton];
+//    BaseTabBarController *tabBarController = [[BaseTabBarController alloc] init];
+    BaseCYLTabBarController *tabBarController = [[BaseCYLTabBarController alloc] init];
+    tabBarController.delegate = self;
     self.window.rootViewController = tabBarController;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -66,6 +71,23 @@
     }
     //解决ios12webView全屏播放视频返回后状态栏消失
     [self videoPlayerFinishedToShowStatusBar];
+}
+
+#pragma mark UITabBarControllerDelegate
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectControl:(UIControl *)control {
+    [self addScaleAnimationOnView:control repeatCount:1];
+}
+
+//缩放动画
+- (void)addScaleAnimationOnView:(UIView *)animationView repeatCount:(float)repeatCount {
+    //需要实现的帧动画，这里根据需求自定义
+    CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
+    animation.keyPath = @"transform.scale";
+    animation.values = @[@1.0,@1.3,@0.9,@1.15,@0.95,@1.02,@1.0];
+    animation.duration = 1;
+    animation.repeatCount = repeatCount;
+    animation.calculationMode = kCAAnimationCubic;
+    [animationView.layer addAnimation:animation forKey:nil];
 }
 
 //解决ios12webView全屏播放视频返回后状态栏消失

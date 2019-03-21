@@ -33,5 +33,10 @@
 #import "NSString+IsBlackStr.h"
 #import "NSString+NowTimeInterval.h"
 #import "NSDate+DateFormatter.h"
+#import "NSString+CurrentDevice.h"
+
+//View
+#import "CYLTabBarController.h"
+#import "FLAnimatedImageView.h"
 
 #endif /* PrefixHeader_pch */

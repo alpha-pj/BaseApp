@@ -14,6 +14,8 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - CYLTabBarController (1.19.3)
+  - FLAnimatedImage (1.0.12)
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
   - MJRefresh (3.1.15.7)
@@ -29,6 +31,8 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.2.1)
+  - CYLTabBarController (~> 1.19.3)
+  - FLAnimatedImage (~> 1.0.12)
   - Masonry (~> 1.1.0)
   - MBProgressHUD (~> 1.1.0)
   - MJRefresh (~> 3.1.15.7)
@@ -38,6 +42,8 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
+    - CYLTabBarController
+    - FLAnimatedImage
     - Masonry
     - MBProgressHUD
     - MJRefresh
@@ -47,6 +53,8 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  CYLTabBarController: 88b8d428f30fd12cf12073174ad8a4b51cd66b94
+  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
@@ -54,6 +62,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: a1efeefb30bd20d3708a8d28fce0463e0d25a338
+PODFILE CHECKSUM: 4e6c4efb7f205641750503f946901e45ee719b63
 
 COCOAPODS: 1.5.0

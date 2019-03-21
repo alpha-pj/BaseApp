@@ -18,6 +18,9 @@
 
 #pragma mark 显示提示文本n秒(view上)
 + (void)showMBHudWithText:(NSString *)text view:(UIView *)view {
+    if ([NSString isBlankString:text]) {
+        return;
+    }
     if (!view) {
         view = [UIApplication sharedApplication].keyWindow;
     }
@@ -47,7 +50,7 @@
 + (void)showMBHudWithText:(NSString *)text position:(PositionType)type {
     [BaseMBProgressHud showMBHudWithText:text view:nil position:type];
 }
-#pragma mark 显示提示文本1秒(view上)并设置位置
+#pragma mark 显示提示文本1秒,并设置view、位置
 + (void)showMBHudWithText:(NSString *)text view:(UIView *)view position:(PositionType)type {
     if (!view) {
         view = [UIApplication sharedApplication].keyWindow;

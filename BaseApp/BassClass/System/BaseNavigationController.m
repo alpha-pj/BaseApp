@@ -19,7 +19,7 @@
     // Do any additional setup after loading the view.
     //标题颜色和背景
     [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor],NSFontAttributeName:[UIFont boldSystemFontOfSize:18]}];
-    [self.navigationBar setBackgroundImage:[YYImage yy_imageWithColor:[UIColor blueColor]] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationBar setBackgroundImage:[YYImage yy_imageWithColor:[UIColor whiteColor]] forBarMetrics:UIBarMetricsDefault];
     [self.navigationBar setTintColor:[UIColor blackColor]];
     
     UIBarButtonItem *item = [UIBarButtonItem appearance];
@@ -34,6 +34,8 @@
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
     if (self.viewControllers.count > 0) {
         viewController.hidesBottomBarWhenPushed = YES;
+    } else {
+        viewController.hidesBottomBarWhenPushed = NO;
     }
     [super pushViewController:viewController animated:animated];
 }
