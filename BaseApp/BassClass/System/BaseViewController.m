@@ -14,6 +14,10 @@
 
 @implementation BaseViewController
 
+- (void)dealloc {
+    PoLog(@"%@ dealloc", NSStringFromClass([self class]));
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
@@ -27,12 +31,12 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    NSLog(@"WillAppear --- %@", NSStringFromClass([self class]));
+    PoLog(@"WillAppear --- %@", NSStringFromClass([self class]));
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    NSLog(@"WillDisappear --- %@", NSStringFromClass([self class]));
+    PoLog(@"WillDisappear --- %@", NSStringFromClass([self class]));
 }
 
 /*

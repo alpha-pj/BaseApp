@@ -8,6 +8,8 @@
 
 #import "BaseCYLPlusButton.h"
 
+#import "MyBaseController.h"
+
 @interface BaseCYLPlusButton () <CYLPlusButtonSubclassing>
 
 @end
@@ -25,8 +27,14 @@
 - (void)plusButtonAction:(BaseCYLPlusButton *)button {
     CYLTabBarController *tabBarController = [self cyl_tabBarController];
     UIViewController *viewController = tabBarController.selectedViewController;
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"OK", @"确定", nil];
-    [actionSheet showInView:viewController.view];
+    
+    MyBaseController *vc = [[MyBaseController alloc] init];
+    vc.showWeather = YES;
+    if ([viewController isMemberOfClass:[UIViewController class]]) {
+        [viewController.navigationController pushViewController:vc animated:YES];
+    } else if ([viewController isMemberOfClass:[BaseNavigationController class]]) {
+        [(BaseNavigationController *)viewController pushViewController:vc animated:YES];
+    }
 }
 
 + (CGFloat)constantOfPlusButtonCenterYOffsetForTabBarHeight:(CGFloat)tabBarHeight {

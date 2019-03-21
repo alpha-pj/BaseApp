@@ -27,52 +27,54 @@
 }
 
 #pragma mark 处理get请求
-+ (void)doGetRequestWithUrl:(NSString *)url
-                parameters:(NSDictionary *)parameters
-                  progress:(void (^)(NSProgress * _Nonnull))progress
-                   success:(void (^)(NSURLSessionDataTask * _Nonnull, id _Nullable))success
-                   failure:(void (^)(NSURLSessionDataTask * _Nullable, NSError * _Nonnull))failure {
++ (NSURLSessionDataTask *)doGetRequestWithUrl:(NSString *)url
+                                   parameters:(NSDictionary *)parameters
+                                     progress:(void (^)(NSProgress *downloadProgress))progress
+                                      success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+                                      failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
     //AFN管理者调用get请求方法
-    [[BaseNetWork shareAFNManager] GET:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+    NSURLSessionDataTask *task = [[BaseNetWork shareAFNManager] GET:url parameters:parameters progress:^(NSProgress *downloadProgress) {
         //返回请求返回进度
         if (progress) {
             progress(downloadProgress);
         }
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
         //请求成功返回数据 根据responseSerializer 返回不同的数据格式
         if (success) {
             success(task, responseObject);
         }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         //请求失败
         if (failure) {
             failure(task, error);
         }
     }];
+    return task;
 }
 #pragma mark 处理post请求
-+ (void)doPostRequestWithUrl:(NSString *)url
-                 parameters:(NSDictionary *)parameters
-                   progress:(void (^)(NSProgress * _Nonnull))progress
-                    success:(void (^)(NSURLSessionDataTask * _Nonnull, id _Nullable))success
-                    failure:(void (^)(NSURLSessionDataTask * _Nullable, NSError * _Nonnull))failure {
++ (NSURLSessionDataTask *)doPostRequestWithUrl:(NSString *)url
+                                    parameters:(NSDictionary *)parameters
+                                      progress:(void (^)(NSProgress *downloadProgress))progress
+                                       success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+                                       failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
     //AFN管理者调用post请求方法
-    [[BaseNetWork shareAFNManager] POST:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+    NSURLSessionDataTask *task = [[BaseNetWork shareAFNManager] POST:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
         //返回请求返回进度
         if (progress) {
             progress(downloadProgress);
         }
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
         //请求成功返回数据 根据responseSerializer 返回不同的数据格式
         if (success) {
             success(task, responseObject);
         }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         //请求失败
         if (failure) {
             failure(task, error);
         }
     }];
+    return task;
 }
 #pragma mark 处理文件上传
 //-(void)doUploadRequest {

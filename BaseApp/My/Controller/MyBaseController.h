@@ -10,4 +10,6 @@
 
 @interface MyBaseController : BaseViewController
 
+@property (nonatomic, assign) BOOL showWeather;
+
 @end

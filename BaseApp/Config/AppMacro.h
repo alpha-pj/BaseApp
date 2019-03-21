@@ -37,10 +37,10 @@
 
 // 自定义打印
 #ifdef  DEBUG
-#define Log(...) NSLog(__VA_ARGS__);
+#define PoLog(...) NSLog(__VA_ARGS__);
 #define Log_METHOD NSLog(@"%s",__func__);
 #else
-#define Log(...);
+#define PoLog(...);
 #define Log_METHOD;
 #endif
 
