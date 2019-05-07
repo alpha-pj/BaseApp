@@ -76,76 +76,34 @@
     }];
     return task;
 }
-#pragma mark 处理文件上传
-//-(void)doUploadRequest {
-//    // 创建URL资源地址
-//    NSString *url = @"http://api.nohttp.net/upload";
-//    // 参数
-//    NSDictionary *parameters=@{@"name":@"yanzhenjie",@"pwd":@"123"};
-//    [[BaseNetWork shareAFNManager] POST:url parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-//        NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
-//        NSTimeInterval a=[dat timeIntervalSince1970];
-//        NSString* fileName = [NSString stringWithFormat:@"file_%0.f.txt", a];
-//
-//        [FileUtils writeDataToFile:fileName data:[@"upload_file_to_server" dataUsingEncoding:NSUTF8StringEncoding]];
-//        // 获取数据转换成data
-//        NSString *filePath =[FileUtils getFilePath:fileName];
-//        // 拼接数据到请求题中
-//        [formData appendPartWithFileURL:[NSURL fileURLWithPath:filePath] name:@"headUrl" fileName:fileName mimeType:@"application/octet-stream" error:nil];
-//
-//    } progress:^(NSProgress * _Nonnull uploadProgress) {
-//        // 上传进度
-//        NSLog(@"%lf",1.0 *uploadProgress.completedUnitCount / uploadProgress.totalUnitCount);
-//    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        //请求成功
-//        NSLog(@"请求成功：%@",responseObject);
-//
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        //请求失败
-//        NSLog(@"请求失败：%@",error);
-//    }];
-//}
+
 #pragma mark 处理文件下载
-//-(void)doDownLoadRequest {
-//    NSString *urlStr =@"http://images2015.cnblogs.com/blog/950883/201701/950883-20170105104233581-62069155.png";
-//    // 设置请求的URL地址
-//    NSURL *url = [NSURL URLWithString:urlStr];
-//    // 创建请求对象
-//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-//    // 下载任务
-//    NSURLSessionDownloadTask *task = [[BaseNetWork shareAFNManager] downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
-//        // 下载进度
-//        NSLog(@"当前下载进度为:%lf", 1.0 * downloadProgress.completedUnitCount / downloadProgress.totalUnitCount);
-//    } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
-//        // 下载地址
-//        NSLog(@"默认下载地址%@",targetPath);
-//        //这里模拟一个路径 真实场景可以根据url计算出一个md5值 作为fileKey
-//        NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
-//        NSTimeInterval a=[dat timeIntervalSince1970];
-//        NSString* fileKey = [NSString stringWithFormat:@"/file_%0.f.txt", a];
-//        // 设置下载路径,通过沙盒获取缓存地址,最后返回NSURL对象
-//        NSString *filePath = [FileUtils getFilePath:fileKey];
-//        return [NSURL fileURLWithPath:filePath]; // 返回的是文件存放在本地沙盒的地址
-//    } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
-//        // 下载完成调用的方法
-//        NSLog(@"filePath---%@", filePath);
-//        NSData *data=[NSData dataWithContentsOfURL:filePath];
-//        UIImage *image=[UIImage imageWithData:data];
-//        // 刷新界面...
-//        UIImageView *imageView =[[UIImageView alloc]init];
-//        imageView.image=image;
-//        [self.view addSubview:imageView];
-//        [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.center.equalTo(self.view);
-//            make.size.mas_equalTo(CGSizeMake(300, 300));
-//        }];
-//    }];
-//    //启动下载任务
-//    [task resume];
-//}
++ (void)downLoadFileWithUrl:(NSString *)url
+                   savePath:(NSString *)savePath
+                   progress:(void (^)(CGFloat value))progress
+                   complete:(void (^)(NSURL *filePath, NSError *error))complete {
+    AFHTTPSessionManager *manager = [BaseNetWork shareAFNManager];
+//    if (referer) {
+//        [manager.requestSerializer setValue:referer forHTTPHeaderField:@"Referer"];
+//    }
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    [[manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
+        if (progress) {
+            progress(downloadProgress.fractionCompleted);
+        }
+    } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
+        NSURL *url = [[NSURL alloc] initFileURLWithPath:savePath];
+        //返回要保存文件的路径
+        return url;
+    } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
+        if (complete) {
+            complete(filePath, error);
+        }
+    }] resume];
+}
+
 #pragma mark 网络状态监听
-+ (void)aFNetworkStatus{
-    
++ (void)aFNetworkStatus {
     //创建网络监测者
     AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
     
@@ -163,24 +121,23 @@
         //在里面可以随便写事件
         switch (status) {
             case AFNetworkReachabilityStatusUnknown:
-                NSLog(@"未知网络状态");
+                [BaseMBProgressHud showMBHudWithText:@"未知网络"];
                 break;
             case AFNetworkReachabilityStatusNotReachable:
-                NSLog(@"无网络");
+                [BaseMBProgressHud showMBHudWithText:@"无网络"];
                 break;
                 
             case AFNetworkReachabilityStatusReachableViaWWAN:
-                NSLog(@"蜂窝数据网");
+                [BaseMBProgressHud showMBHudWithText:@"蜂窝数据网络"];
                 break;
                 
             case AFNetworkReachabilityStatusReachableViaWiFi:
-                NSLog(@"WiFi网络");
+                [BaseMBProgressHud showMBHudWithText:@"WiFi网络"];
                 break;
                 
             default:
                 break;
         }
-        
     }] ;
     
     [manager startMonitoring];

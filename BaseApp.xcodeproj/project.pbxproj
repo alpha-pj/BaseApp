@@ -352,6 +352,29 @@
 			path = AppRequest;
 			sourceTree = "<group>";
 		};
+		DC0E60202281852600D16420 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DC0E60212281852600D16420 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DCFA4937208B251800AC8832 /* HomeBaseController.h */,
+				DCFA4938208B251800AC8832 /* HomeBaseController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		DC0E60222281852600D16420 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		DC111200224327A60010C3C5 /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -773,8 +796,9 @@
 		DCFA4936208B24FE00AC8832 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				DCFA4937208B251800AC8832 /* HomeBaseController.h */,
-				DCFA4938208B251800AC8832 /* HomeBaseController.m */,
+				DC0E60212281852600D16420 /* Controller */,
+				DC0E60202281852600D16420 /* Model */,
+				DC0E60222281852600D16420 /* View */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1117,6 +1141,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = ATHQN5357C;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

@@ -11,7 +11,8 @@
 
 @implementation NSString (CurrentDevice)
     
-    // 获取设备型号然后手动转化为对应名称
+// 获取设备型号然后手动转化为对应名称
+//https://www.theiphonewiki.com/wiki/Models
 + (NSString *)deviceInfo {
     // 需要#import "sys/utsname.h"
     struct utsname systemInfo;
@@ -92,6 +93,20 @@
     if ([deviceString isEqualToString:@"iPad7,2"])     return @"iPad Pro 12.9 inch 2nd gen (Cellular)";
     if ([deviceString isEqualToString:@"iPad7,3"])     return @"iPad Pro 10.5 inch (WiFi)";
     if ([deviceString isEqualToString:@"iPad7,4"])     return @"iPad Pro 10.5 inch (Cellular)";
+    if ([deviceString isEqualToString:@"iPad7,5"])  return @"iPad 6";
+    if ([deviceString isEqualToString:@"iPad7,6"])  return @"iPad 6";
+    if ([deviceString isEqualToString:@"iPad8,1"])  return @"iPad Pro (11-inch) ";
+    if ([deviceString isEqualToString:@"iPad8,2"])  return @"iPad Pro (11-inch) ";
+    if ([deviceString isEqualToString:@"iPad8,3"])  return @"iPad Pro (11-inch) ";
+    if ([deviceString isEqualToString:@"iPad8,4"])  return @"iPad Pro (11-inch) ";
+    if ([deviceString isEqualToString:@"iPad8,5"])  return @"iPad Pro 3 (12.9-inch) ";
+    if ([deviceString isEqualToString:@"iPad8,6"])  return @"iPad Pro 3 (12.9-inch) ";
+    if ([deviceString isEqualToString:@"iPad8,7"])  return @"iPad Pro 3 (12.9-inch) ";
+    if ([deviceString isEqualToString:@"iPad8,8"])  return @"iPad Pro 3 (12.9-inch) ";
+    if ([deviceString isEqualToString:@"iPad11,1"])  return @"iPad mini (5th generation)";
+    if ([deviceString isEqualToString:@"iPad11,2"])  return @"iPad mini (5th generation)";
+    if ([deviceString isEqualToString:@"iPad11,3"])  return @"iPad Air (3rd generation)";
+    if ([deviceString isEqualToString:@"iPad11,4"])  return @"iPad Air (3rd generation)";
     
     if ([deviceString isEqualToString:@"AppleTV2,1"])    return @"Apple TV 2";
     if ([deviceString isEqualToString:@"AppleTV3,1"])    return @"Apple TV 3";
@@ -104,26 +119,21 @@
     return deviceString;
 }
     
-+ (BOOL)isiPhoneX {
-    static BOOL isiPhoneX = NO;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        
-#if TARGET_IPHONE_SIMULATOR
-        // 获取模拟器所对应的 device model
-        NSString *model = NSProcessInfo.processInfo.environment[@"SIMULATOR_MODEL_IDENTIFIER"];
-#else
-        // 获取真机设备的 device model
-        struct utsname systemInfo;
-        uname(&systemInfo);
-        NSString *model = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
-#endif
-        // 判断 device model 是否为 "iPhone10,3" 和 "iPhone10,6" 或者以 "iPhone11," 开头
-        // 如果是，就认为是 iPhone X
-        isiPhoneX = [model isEqualToString:@"iPhone10,3"] || [model isEqualToString:@"iPhone10,6"] || [model hasPrefix:@"iPhone11,"];
-    });
-    
-    return isiPhoneX;
++ (BOOL)isFullScreen {
+    if (@available(iOS 11.0, *)) {
+        if ([self safeAreaInsets].bottom > 0.0) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
++ (UIEdgeInsets)safeAreaInsets {
+    if (@available(iOS 11.0, *)) {
+        return UIApplication.sharedApplication.keyWindow.safeAreaInsets;
+    } else {
+        return UIEdgeInsetsZero;
+    }
 }
     
-    @end
+@end

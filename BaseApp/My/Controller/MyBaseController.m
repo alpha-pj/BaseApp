@@ -66,7 +66,7 @@
         [BaseMBProgressHud showMBHudWithView:self.view];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [BaseMBProgressHud hideMBHudWithView:self.view];
-            [BaseMBProgressHud showMBHudWithText:@"SDWebImage加载Webp和Gif" view:self.view position:(PositionTypeTop)];
+            [BaseMBProgressHud showMBHudWithText:@"SDWebImage加载Webp和Gif" view:self.view position:(PositionTypeCenter)];
         });
     }
 }

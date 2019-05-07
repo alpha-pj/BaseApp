@@ -12,7 +12,8 @@
 
 + (NSString*)deviceInfo;
     
-//是否是iphonex系列
-+ (BOOL)isiPhoneX;
++ (BOOL)isFullScreen;
+
++ (UIEdgeInsets)safeAreaInsets;
 
 @end

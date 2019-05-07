@@ -9,7 +9,7 @@
 #import "KeychainWrapper.h"
 
 //Unique string used to identify the keychain item:
-static const UInt8 kKeychainItemIdentifier[]    = "com.peij.base";
+static const UInt8 kKeychainItemIdentifier[]    = "com.zpj.base";
 
 @interface KeychainWrapper (PrivateMethods)
 

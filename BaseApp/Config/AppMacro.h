@@ -51,15 +51,23 @@
 #define TICK   NSDate *startTime = [NSDate date]
 #define TOCK   Log(@"Time: %f", -[startTime timeIntervalSinceNow])
 
-// 判断是否是iPhone X
-#define iPhoneX [NSString isiPhoneX]
+/** 判断是否是FullScreen（全面屏）*/
+//安全区域
+#define SafeAreaInsets [NSString safeAreaInsets]
+#define FullScreen [NSString isFullScreen]
 // 状态栏高度
-#define STATUS_BAR_HEIGHT (iPhoneX ? 44.f : 20.f)
+#define STATUS_BAR_HEIGHT (FullScreen ? SafeAreaInsets.top : 20.f)
 // 导航栏高度
-#define NAVIGATION_BAR_HEIGHT (iPhoneX ? 88.f : 64.f)
+#define NAVIGATION_BAR_HEIGHT (FullScreen ? (STATUS_BAR_HEIGHT + 44.f) : 64.f)
 // tabBar高度
-#define TAB_BAR_HEIGHT (iPhoneX ? (49.f+34.f) : 49.f)
+#define TAB_BAR_HEIGHT (FullScreen ? (49.f + SafeAreaInsets.bottom) : 49.f)
 // home indicator
-#define HOME_INDICATOR_HEIGHT (iPhoneX ? 34.f : 0.f)
+#define HOME_INDICATOR_HEIGHT (FullScreen ? SafeAreaInsets.bottom : 0.f)
+
+//触感反馈·轻
+#define ImpactLight if ([UIDevice currentDevice].systemVersion.floatValue >= 10.0) { \
+                            UIImpactFeedbackGenerator *impactLight = [[UIImpactFeedbackGenerator alloc]initWithStyle:UIImpactFeedbackStyleLight]; \
+                            [impactLight impactOccurred]; \
+                        } \
 
 #endif /* AppMacro_h */

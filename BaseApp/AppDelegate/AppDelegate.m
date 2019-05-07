@@ -71,6 +71,8 @@
     }
     //解决ios12webView全屏播放视频返回后状态栏消失
     [self videoPlayerFinishedToShowStatusBar];
+    //网络监听
+    [BaseNetWork aFNetworkStatus];
 }
 
 #pragma mark UITabBarControllerDelegate

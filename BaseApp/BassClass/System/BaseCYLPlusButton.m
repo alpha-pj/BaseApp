@@ -25,16 +25,18 @@
 }
 
 - (void)plusButtonAction:(BaseCYLPlusButton *)button {
-    CYLTabBarController *tabBarController = [self cyl_tabBarController];
-    UIViewController *viewController = tabBarController.selectedViewController;
-    
-    MyBaseController *vc = [[MyBaseController alloc] init];
-    vc.showWeather = YES;
-    if ([viewController isMemberOfClass:[UIViewController class]]) {
-        [viewController.navigationController pushViewController:vc animated:YES];
-    } else if ([viewController isMemberOfClass:[BaseNavigationController class]]) {
-        [(BaseNavigationController *)viewController pushViewController:vc animated:YES];
-    }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        CYLTabBarController *tabBarController = [self cyl_tabBarController];
+        UIViewController *viewController = tabBarController.selectedViewController;
+        
+        MyBaseController *vc = [[MyBaseController alloc] init];
+        vc.showWeather = YES;
+        if ([viewController isMemberOfClass:[UIViewController class]]) {
+            [viewController.navigationController pushViewController:vc animated:YES];
+        } else if ([viewController isMemberOfClass:[BaseNavigationController class]]) {
+            [(BaseNavigationController *)viewController pushViewController:vc animated:YES];
+        }
+    });
 }
 
 + (CGFloat)constantOfPlusButtonCenterYOffsetForTabBarHeight:(CGFloat)tabBarHeight {
