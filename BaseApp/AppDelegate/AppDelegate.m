@@ -77,7 +77,12 @@
 
 #pragma mark UITabBarControllerDelegate
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectControl:(UIControl *)control {
-    [self addScaleAnimationOnView:control repeatCount:1];
+    if ([control isKindOfClass:[BaseCYLPlusButton class]]) {
+        //中间加号(跳转去BaseCYLPlusButton.m设置)
+    } else if ([control isKindOfClass:NSClassFromString(@"UITabBarButton")]) {
+        //(跳转去BaseTabBarController.m设置)
+        [self addScaleAnimationOnView:control repeatCount:1];
+    }
 }
 
 //缩放动画

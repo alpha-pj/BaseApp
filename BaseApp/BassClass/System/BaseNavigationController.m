@@ -37,6 +37,11 @@
     } else {
         viewController.hidesBottomBarWhenPushed = NO;
     }
+    //去掉返回文字
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
+    backItem.title = @"";
+    viewController.navigationItem.backBarButtonItem = backItem;
+    
     [super pushViewController:viewController animated:animated];
 }
 
