@@ -16,7 +16,6 @@
 #import <YYWebImage/YYWebImage.h>
 #import "UIImageView+WebCache.h"
 #import "CYLTabBarController.h"
-#import "FLAnimatedImageView.h"
 
 //宏
 #import "AppMacro.h"

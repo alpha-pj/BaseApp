@@ -9,6 +9,10 @@
 #import "AppDelegate.h"
 //#import "BaseTabBarController.h"
 #import "BaseCYLTabBarController.h"
+
+#import "SDImageCodersManager.h"
+#import "SDImageWebPCoder.h"
+
 #import "BaseCYLPlusButton.h"
 
 @interface AppDelegate () <UITabBarControllerDelegate>
@@ -73,6 +77,9 @@
     [self videoPlayerFinishedToShowStatusBar];
     //网络监听
     [BaseNetWork aFNetworkStatus];
+    
+    //SDWebImage支持webp
+    [[SDImageCodersManager sharedManager] addCoder:[SDImageWebPCoder sharedCoder]];
 }
 
 #pragma mark UITabBarControllerDelegate

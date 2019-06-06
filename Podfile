@@ -7,10 +7,12 @@ use_frameworks!
 pod 'Masonry', '~> 1.1.0'
 pod 'AFNetworking', '~> 3.2.1'
 pod 'MBProgressHUD', '~> 1.1.0'
-pod 'YYWebImage', '~> 1.0.5'
-pod 'YYImage/WebP'  ######YYImage支持webp
 pod 'MJRefresh', '~> 3.1.15.7'
 pod 'CYLTabBarController', '~> 1.19.3'
-pod 'FLAnimatedImage', '~> 1.0.12'
+
+pod 'SDWebImage', '~> 5.0.2'
+pod 'YYWebImage', '~> 1.0.5'
+# YYImage支持webp
+pod 'YYImage/WebP'
 
 end

@@ -33,7 +33,7 @@
         [self.view addSubview:imageV];
         //SD测试gif
         NSURL *gitUrl = [NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553143850117&di=7edda36c804d73229796380c0f1c6309&imgtype=0&src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20160912%2Fcfa771329ad9495381f335b7c4def907_th.gif"];
-        FLAnimatedImageView *animateImageV = [[FLAnimatedImageView alloc] initWithFrame:CGRectMake(200, 250, 100, 100)];
+        UIImageView *animateImageV = [[UIImageView alloc] initWithFrame:CGRectMake(200, 250, 100, 100)];
         animateImageV.backgroundColor = [UIColor whiteColor];
         [animateImageV sd_setImageWithURL:gitUrl];
         [self.view addSubview:animateImageV];
