@@ -6,25 +6,16 @@
  * file that was distributed with this source code.
  */
 
-#ifdef SD_WEBP
-
 #import "UIImage+WebP.h"
-#import "SDWebImageWebPCoder.h"
-#import "UIImage+MultiFormat.h"
+#import "SDImageWebPCoder.h"
 
 @implementation UIImage (WebP)
-
-- (NSInteger)sd_webpLoopCount {
-    return self.sd_imageLoopCount;
-}
 
 + (nullable UIImage *)sd_imageWithWebPData:(nullable NSData *)data {
     if (!data) {
         return nil;
     }
-    return [[SDWebImageWebPCoder sharedCoder] decodedImageWithData:data];
+    return [[SDImageWebPCoder sharedCoder] decodedImageWithData:data options:0];
 }
 
 @end
-
-#endif
