@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+/**
+ 支持placeholder的UITextView
+ */
+@interface ZTextView : UITextView  //已弃用，请使用IQTextView
 
-@interface ZTextView : UITextView
+@property(nullable, nonatomic,copy) IBInspectable NSString *placeholder;
 
-@property (nonatomic, strong) NSString *placeholder;
-@property (nonatomic, strong) UILabel *placeholderLb;
+@property(nullable, nonatomic,copy) IBInspectable NSAttributedString *attributedPlaceholder;
 
-@property (nonatomic, copy) void (^textChangedBlock)(ZTextView *textView);
+@property(nullable, nonatomic,copy) IBInspectable UIColor *placeholderTextColor;
 
 @end

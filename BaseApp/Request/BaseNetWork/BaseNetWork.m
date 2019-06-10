@@ -83,9 +83,6 @@
                    progress:(void (^)(CGFloat value))progress
                    complete:(void (^)(NSURL *filePath, NSError *error))complete {
     AFHTTPSessionManager *manager = [BaseNetWork shareAFNManager];
-//    if (referer) {
-//        [manager.requestSerializer setValue:referer forHTTPHeaderField:@"Referer"];
-//    }
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     [[manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
         if (progress) {

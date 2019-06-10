@@ -41,6 +41,18 @@
         make.top.mas_equalTo(400);
         make.width.height.mas_equalTo(50);
     }];
+    
+    IQTextView *textView = [[IQTextView alloc] init];
+    textView.font = [UIFont systemFontOfSize:10];
+    textView.placeholder = @"IQKeyboardManager";
+    [self.view addSubview:textView];
+    
+    [textView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.view);
+        make.top.mas_equalTo(20);
+        make.width.mas_equalTo(300);
+        make.height.mas_equalTo(30);
+    }];
 }
 
 - (void)buttonAction {

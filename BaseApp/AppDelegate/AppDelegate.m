@@ -10,9 +10,6 @@
 //#import "BaseTabBarController.h"
 #import "BaseCYLTabBarController.h"
 
-#import "SDImageCodersManager.h"
-#import "SDImageWebPCoder.h"
-
 #import "BaseCYLPlusButton.h"
 
 @interface AppDelegate () <UITabBarControllerDelegate>

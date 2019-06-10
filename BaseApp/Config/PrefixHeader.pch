@@ -14,7 +14,7 @@
 //pod
 #import <Masonry/Masonry.h>
 #import <YYWebImage/YYWebImage.h>
-#import "UIImageView+WebCache.h"
+#import "SDImageWebPCoder.h"
 #import "CYLTabBarController.h"
 
 //宏
@@ -24,6 +24,7 @@
 #import "BaseNavigationController.h"
 #import "BaseViewController.h"
 #import "BaseMBProgressHud.h"
+#import "IQKeyboardManager.h"
 
 //类目
 #import "UIColor+Category.h"
