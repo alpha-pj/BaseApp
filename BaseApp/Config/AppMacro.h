@@ -17,9 +17,6 @@
 /***********常用方法***********/
 #define ColorHexString(hexString) [UIColor colorWithHexString:hexString]
 
-//图片referer
-#define ImgReferer @"image_referer"
-
 // 屏幕尺寸
 #define ScreenWidth ((([UIScreen mainScreen].bounds.size.width)>([UIScreen mainScreen].bounds.size.height))?([UIScreen mainScreen].bounds.size.height):([UIScreen mainScreen].bounds.size.width))
 #define ScreenHeight ((([UIScreen mainScreen].bounds.size.width)>([UIScreen mainScreen].bounds.size.height))?([UIScreen mainScreen].bounds.size.width):([UIScreen mainScreen].bounds.size.height))
@@ -63,6 +60,9 @@
 #define TAB_BAR_HEIGHT (FullScreen ? (49.f + SafeAreaInsets.bottom) : 49.f)
 // home indicator
 #define HOME_INDICATOR_HEIGHT (FullScreen ? SafeAreaInsets.bottom : 0.f)
+
+// 是否iPad
+#define isPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 
 //触感反馈·轻
 #define ImpactLight if ([UIDevice currentDevice].systemVersion.floatValue >= 10.0) { \

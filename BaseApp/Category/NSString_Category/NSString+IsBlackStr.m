@@ -40,7 +40,14 @@
 }
 
 + (BOOL)isString:(id)string {
+    if (![string isKindOfClass:[NSString class]]) {
+        return NO;
+    }
     return ![NSString isBlankString:string];
+}
+
+- (NSString *)stringValue {
+    return self;
 }
 
 @end

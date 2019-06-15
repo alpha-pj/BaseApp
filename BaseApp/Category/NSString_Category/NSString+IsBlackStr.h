@@ -14,5 +14,7 @@
 + (BOOL)isBlankString:(id)string;
 //不为空的字符串
 + (BOOL)isString:(id)string;
+//防止NSString被当作NSNumber等误调stringValue
+- (NSString *)stringValue;
 
 @end
