@@ -9,7 +9,7 @@
 #ifndef AppTextFile_h
 #define AppTextFile_h
 
-//示例
-#define AppText_hello @"你好"
+#define AppText_cancel              @"取消"
+#define AppText_confirm             @"确定"
 
 #endif /* AppTextFile_h */

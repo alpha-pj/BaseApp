@@ -12,13 +12,12 @@
 
 /**
  创建一个label
-
+ 
  @param hexString 字体颜色16进制字符串
- @param fontSize 字体大小
+ @param font 字体
+ @param alignment 对齐方式
  @return 创建好的label
  */
-+ (UILabel *)createLabelWithTextColorHexString:(NSString *)hexString fontSize:(CGFloat)fontSize;
-
-+ (UILabel *)createLabelWithTextColorHexString:(NSString *)hexString boldFontSize:(CGFloat)fontSize;
++ (UILabel *)createLabelWithTextColorHexString:(NSString *)hexString font:(UIFont *)font alignment:(NSTextAlignment)alignment;
 
 @end

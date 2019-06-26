@@ -33,12 +33,14 @@
 #import "NSArray+SafeIndex.h"
 #import "NSMutableArray+SafeAdd.h"
 #import "UIButton+CreateButton.h"
+#import "UILabel+CreateLabel.h"
 #import "UIView+Frame.h"
 #import "NSString+IsBlackStr.h"
 #import "NSString+NowTimeInterval.h"
 #import "NSString+Json.h"
 #import "NSDate+DateFormatter.h"
 #import "NSString+CurrentDevice.h"
+#import "UIView+CornerRadius.h"
 
 //网络请求
 #import "BaseNetWork.h"

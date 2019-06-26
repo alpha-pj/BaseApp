@@ -10,23 +10,11 @@
 
 @implementation UILabel (CreateLabel)
 
-+ (UILabel *)createLabelWithTextColorHexString:(NSString *)hexString fontSize:(CGFloat)fontSize {
++ (UILabel *)createLabelWithTextColorHexString:(NSString *)hexString font:(UIFont *)font alignment:(NSTextAlignment)alignment {
     UILabel *label = [[UILabel alloc] init];
     label.textColor = [UIColor colorWithHexString:hexString];
-    if (!fontSize) {
-        fontSize = 10;
-    }
-    label.font = [UIFont systemFontOfSize:fontSize];
-    return label;
-}
-
-+ (UILabel *)createLabelWithTextColorHexString:(NSString *)hexString boldFontSize:(CGFloat)fontSize {
-    UILabel *label = [[UILabel alloc] init];
-    label.textColor = [UIColor colorWithHexString:hexString];
-    if (!fontSize) {
-        fontSize = 10;
-    }
-    label.font = [UIFont boldSystemFontOfSize:fontSize];
+    label.font = font;
+    label.textAlignment = alignment;
     return label;
 }
 

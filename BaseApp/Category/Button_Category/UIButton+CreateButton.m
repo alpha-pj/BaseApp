@@ -10,13 +10,9 @@
 
 @implementation UIButton (CreateButton)
 
-+ (UIButton *)createButtonWithTextColorHexString:(NSString *)hexString title:(NSString *)title fontSize:(CGFloat)fontSize isBold:(BOOL)isBold {
++ (UIButton *)createButtonWithTextColorHexString:(NSString *)hexString title:(NSString *)title font:(UIFont *)font {
     UIButton *button = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    if (isBold) {
-        button.titleLabel.font = [UIFont boldSystemFontOfSize:fontSize];
-    } else {
-        button.titleLabel.font = [UIFont systemFontOfSize:fontSize];
-    }
+    button.titleLabel.font = font;
     [button setTitle:title forState:(UIControlStateNormal)];
     [button setTitleColor:[UIColor colorWithHexString:hexString] forState:(UIControlStateNormal)];
     return button;

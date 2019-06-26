@@ -10,9 +10,17 @@
 #define AppMacro_h
 
 /*************App*************/
+#define FontName_Normal @"PingFang-SC-Regular"  //苹方体
+#define FontName_Bold @"PingFang-SC-Medium"  //苹方体-中
+
+// 字体大小(常规/粗体)
+#define AppFontNormal(fontSize) [UIFont fontWithName:FontName_Normal size:round(fontSize)]
+#define AppFontBold(fontSize) [UIFont fontWithName:FontName_Bold size:round(fontSize)]
+
 #define AppID @""
 #define APPName [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"]  //app名称
 #define APPVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"] //版本号
+#define APPBundleID [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"] //BundleID
 
 /***********常用方法***********/
 #define ColorHexString(hexString) [UIColor colorWithHexString:hexString]
@@ -46,7 +54,7 @@
 
 //运行时间
 #define TICK   NSDate *startTime = [NSDate date]
-#define TOCK   Log(@"Time: %f", -[startTime timeIntervalSinceNow])
+#define TOCK   PoLog(@"Time: %f", -[startTime timeIntervalSinceNow])
 
 /** 判断是否是FullScreen（全面屏）*/
 //安全区域
@@ -64,10 +72,5 @@
 // 是否iPad
 #define isPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 
-//触感反馈·轻
-#define ImpactLight if ([UIDevice currentDevice].systemVersion.floatValue >= 10.0) { \
-                            UIImpactFeedbackGenerator *impactLight = [[UIImpactFeedbackGenerator alloc]initWithStyle:UIImpactFeedbackStyleLight]; \
-                            [impactLight impactOccurred]; \
-                        } \
 
 #endif /* AppMacro_h */
