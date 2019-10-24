@@ -1,9 +1,9 @@
 //
 //  NSString+NowTimeInterval.m
-//  BaseApp
+//  Lovers
 //
-//  Created by PeiJun on 2018/8/8.
-//  Copyright © 2018年 PeiJun. All rights reserved.
+//  Created by PeiJun on 2019/6/6.
+//  Copyright © 2019 LeMeng. All rights reserved.
 //
 
 #import "NSString+NowTimeInterval.h"
@@ -23,14 +23,13 @@
     return [NSString stringWithFormat:@"%.0f",time * 1000];
 }
 
-+ (NSString *)getTimeStrWithTimeInterval:(NSTimeInterval)TimeInterval  format:(NSString *)format
-{
++ (NSString *)getTimeStrWithTimeInterval:(NSTimeInterval)timeInterval  format:(NSString *)format {
     if ([NSString isBlankString:format]) {
         format = @"yyyy/MM/dd HH:mm:ss";
     }
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = format;
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:TimeInterval];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeInterval];
     NSString *timeStr = [formatter stringFromDate:date];
     return timeStr;
 }
@@ -98,6 +97,16 @@
     timeInt = [timeInt stringByReplacingOccurrencesOfString:@":" withString:@""];
     timeInt = [timeInt stringByReplacingOccurrencesOfString:@"." withString:@""];
     return timeInt;
+}
+
++ (NSString *)getTimeWithSeconds:(CGFloat)seconds {
+    if (seconds < 0) {
+        seconds = 0;
+    }
+    NSInteger allSeconds = (NSInteger)roundf(seconds); //四舍五入取证
+    NSInteger minute = allSeconds / 60;
+    NSInteger currentSeconds = allSeconds - minute * 60;
+    return [NSString stringWithFormat:@"%02ld:%02ld", minute, currentSeconds];
 }
 
 @end

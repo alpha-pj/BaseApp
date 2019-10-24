@@ -10,6 +10,6 @@
 #define LocalMacro_h
 
 //图片referer
-#define ImgReferer @"image_referer"
+#define ImageReferer @"image_referer"
 
 #endif /* LocalMacro_h */

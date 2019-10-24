@@ -1,9 +1,9 @@
 //
 //  UIView+CornerRadius.h
-//  TimeDiary
+//  Lovers
 //
 //  Created by PeiJun on 2017/4/5.
-//  Copyright © 2017年 brt. All rights reserved.
+//  Copyright © 2017年 LeMeng. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -16,7 +16,6 @@
 
  @param corners 需要设置的圆角的位置
  @param cornerRadii 圆角大小
- @return 返回视图
  */
 - (void)setCornerRadiiWithRoundingCorners:(UIRectCorner)corners cornerRadii:(CGSize)cornerRadii;
 

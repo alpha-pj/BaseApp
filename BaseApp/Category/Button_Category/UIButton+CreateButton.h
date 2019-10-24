@@ -1,9 +1,9 @@
 //
 //  UIButton+CreateButton.h
-//  TimeDiary
+//  Lovers
 //
-//  Created by PeiJun on 2018/7/9.
-//  Copyright © 2018年 brt. All rights reserved.
+//  Created by PeiJun on 2019/6/6.
+//  Copyright © 2019 LeMeng. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -12,7 +12,7 @@
 
 /**
  创建button
- 
+
  @param hexString 颜色
  @param title 标题
  @param font 字体

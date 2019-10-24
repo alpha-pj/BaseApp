@@ -1,9 +1,9 @@
 //
 //  NSString+IsCardId.m
-//  TimeDiary
+//  Lovers
 //
-//  Created by PeiJun on 2018/6/27.
-//  Copyright © 2018年 brt. All rights reserved.
+//  Created by PeiJun on 2019/6/6.
+//  Copyright © 2019 LeMeng. All rights reserved.
 //
 
 #import "NSString+IsCardId.h"

@@ -1,9 +1,9 @@
 //
 //  NSString+MonthString.m
-//  TimeDiary
+//  Lovers
 //
 //  Created by PeiJun on 2017/9/18.
-//  Copyright © 2017年 brt. All rights reserved.
+//  Copyright © 2017年 LeMeng. All rights reserved.
 //
 
 #import "NSString+MonthString.h"

@@ -1,9 +1,9 @@
 //
 //  NSString+RemoveEscapeChar.m
-//  TimeDiary
+//  Lovers
 //
 //  Created by PeiJun on 2017/3/31.
-//  Copyright © 2017年 brt. All rights reserved.
+//  Copyright © 2017年 LeMeng. All rights reserved.
 //
 
 #import "NSString+RemoveEscapeChar.h"

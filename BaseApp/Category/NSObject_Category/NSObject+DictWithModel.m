@@ -1,9 +1,9 @@
 //
 //  NSObject+DictWithModel.m
-//  TimeDiary
+//  Lovers
 //
-//  Created by PeiJun on 2018/4/8.
-//  Copyright © 2018年 brt. All rights reserved.
+//  Created by PeiJun on 2019/6/6.
+//  Copyright © 2019 LeMeng. All rights reserved.
 //
 
 #import "NSObject+DictWithModel.h"

@@ -1,9 +1,9 @@
 //
 //  NSDate+DateFormatter.h
-//  TimeDiary
+//  Lovers
 //
-//  Created by PeiJun on 2018/4/16.
-//  Copyright © 2018年 brt. All rights reserved.
+//  Created by PeiJun on 2019/6/6.
+//  Copyright © 2019 LeMeng. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -17,6 +17,15 @@
 + (NSString *)timeAgoFromCommentWithdetailedDate:(NSString *)date DateFomatter:(NSString *)dtfomatter;
 #pragma mark 返回时间戳
 + (double)getTimeIntervalWithData:(NSString *)date DateFomatter:(NSString *)datefomatter;
+/******************** ex: 18:56  **********************/
++ (NSString *)dateAgoFromCommentWithdetailedDate:(NSString *)date DateFomatter:(NSString *)dtfomatter;
+
+/**
+ 根据时间戳返回 ex: 18:56
+
+ @param date 时间戳
+ */
++ (NSString *)dateAgoFromCommentWithDate:(NSInteger)date;
 
 //获取时间（例如 今天 18:20 ， 昨天 21：02 ，12-23 18:13）
 + (NSString *)dateStrWithDateStr:(NSString *)dateString formate:(NSString *)formate;

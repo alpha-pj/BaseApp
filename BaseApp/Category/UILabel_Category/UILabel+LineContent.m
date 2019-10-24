@@ -1,9 +1,9 @@
 //
 //  UILabel+LineContent.m
-//  KoreanFans
+//  Lovers
 //
 //  Created by PeiJun on 2016/11/3.
-//  Copyright © 2016年 PeiJun. All rights reserved.
+//  Copyright © 2016年 LeMeng. All rights reserved.
 //
 
 #import "UILabel+LineContent.h"

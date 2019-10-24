@@ -1,9 +1,9 @@
 //
 //  UIImage+SizeForUrl.m
-//  BaseApp
+//  Lovers
 //
-//  Created by PeiJun on 2018/8/8.
-//  Copyright © 2018年 PeiJun. All rights reserved.
+//  Created by PeiJun on 2019/6/6.
+//  Copyright © 2019 LeMeng. All rights reserved.
 //
 
 #import "UIImage+SizeForUrl.h"
@@ -16,7 +16,7 @@
 + (CGSize)getImageSizeWithURL:(id)URL{
     
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-    NSString *refer = [user objectForKey:ImgReferer];
+    NSString *refer = [user objectForKey:ImageReferer];
     NSURL * url = nil;
     NSURL *sBaseURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@",refer]];
     if ([URL isKindOfClass:[NSURL class]]) {

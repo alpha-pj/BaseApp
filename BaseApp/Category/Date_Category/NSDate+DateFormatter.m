@@ -1,9 +1,9 @@
 //
 //  NSDate+DateFormatter.m
-//  TimeDiary
+//  Lovers
 //
-//  Created by PeiJun on 2018/4/16.
-//  Copyright © 2018年 brt. All rights reserved.
+//  Created by PeiJun on 2019/6/6.
+//  Copyright © 2019 LeMeng. All rights reserved.
 //
 
 #import "NSDate+DateFormatter.h"
@@ -45,10 +45,9 @@
     return time;
 }
 
-+ (NSString *)timeAgoFromCommentWithDate:(int)date
-{
-    int timeNum;
-    int nwTime = [[NSString nwTimeGet] intValue];
++ (NSString *)timeAgoFromCommentWithDate:(int)date {
+    NSInteger timeNum;
+    NSInteger nwTime = [[NSString nwTimeGet] intValue];
     timeNum = nwTime - date;
     if (timeNum <= 0) // 秒
     {
@@ -56,26 +55,81 @@
     }
     if (timeNum > 0 && timeNum < 60) // 秒
     {
-        return [NSString stringWithFormat:@"%d秒前", timeNum];
+        return [NSString stringWithFormat:@"%ld秒前", timeNum];
     }
     else if (timeNum >= 60 && timeNum < 60 * 60)
     {
-        return [NSString stringWithFormat:@"%d分钟前", timeNum / 60];
+        return [NSString stringWithFormat:@"%ld分钟前", timeNum / 60];
     }
     else if (timeNum >= 60 * 60 && timeNum < 24 * 60 * 60)
     {
-        return [NSString stringWithFormat:@"%d小时前", timeNum / (60 * 60)];
+        return [NSString stringWithFormat:@"%ld小时前", timeNum / (60 * 60)];
     }
     else if (timeNum >= 24 * 60 * 60 && timeNum < 7 * 24 * 60 * 60)
     {
-        return [NSString stringWithFormat:@"%d天前", timeNum / (24 * 60 * 60)];
+        return [NSString stringWithFormat:@"%ld天前", timeNum / (24 * 60 * 60)];
     }
     else if (timeNum >= 7 * 24 * 60 * 60 && timeNum < 30 * 24 * 60 * 60)
     {
-        return [NSString stringWithFormat:@"%d个星期前", timeNum / (7 * 24 * 60 * 60)];
+        return [NSString stringWithFormat:@"%ld个星期前", timeNum / (7 * 24 * 60 * 60)];
     }
     else
-        return [NSString stringWithFormat:@"%d个月前", timeNum / (30 * 24 * 60 * 60)];
+        return [NSString stringWithFormat:@"%ld个月前", timeNum / (30 * 24 * 60 * 60)];
+}
+
++ (NSString *)dateAgoFromCommentWithDate:(NSInteger)date {
+    NSInteger timeNum;
+    NSInteger nwTime = [[NSString nwTimeGet] intValue];
+    timeNum = nwTime - date;
+    //传入的时间
+    NSDate *detaildate = [NSDate dateWithTimeIntervalSince1970:date];
+    //当前的时间
+    NSDate *currentDate = [NSDate dateWithTimeIntervalSince1970:nwTime];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //今天0点到现在的时间戳
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate *nowDate = [NSDate date];
+    NSDate *todayDate = [dateFormatter dateFromString:[dateFormatter stringFromDate:nowDate]];
+    NSTimeInterval nowTime = [nowDate timeIntervalSinceDate:todayDate];
+    if (timeNum <= 60 * 60 * 24 + nowTime) {
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        NSString * need_yMd = [dateFormatter stringFromDate:detaildate];
+        NSString *now_yMd = [dateFormatter stringFromDate:nowDate];
+        [dateFormatter setDateFormat:@"HH:mm"];
+        NSString *detailDateStr = nil;
+        if ([need_yMd isEqualToString:now_yMd]) {
+            // 在同一天
+            detailDateStr = [NSString stringWithFormat:@"今天 %@",[dateFormatter stringFromDate:detaildate]];
+        }else{
+            // 昨天
+            detailDateStr = [NSString stringWithFormat:@"昨天 %@",[dateFormatter stringFromDate:detaildate]];
+        }
+        return detailDateStr;
+    } else {
+        [dateFormatter setDateFormat:@"yyyy/MM/dd HH:mm"];
+        //传入的时间
+        NSString *detailDateStr = [dateFormatter stringFromDate: detaildate];
+        //当前的时间
+        NSString *currentDateStr = [dateFormatter stringFromDate: currentDate];
+        if (detailDateStr.length > 4 && currentDateStr.length > 4 && [[detailDateStr substringToIndex:4] isEqualToString:[currentDateStr substringToIndex:4]]) {
+            //同一年
+            [dateFormatter setDateFormat:@"MM/dd HH:mm"];
+            NSString *detailDateStr = [dateFormatter stringFromDate: detaildate];
+            return detailDateStr;
+        } else {
+            return detailDateStr;
+        }
+    }
+}
+
+/******************** ex: 18:56 **********************/
++ (NSString *)dateAgoFromCommentWithdetailedDate:(NSString *)date DateFomatter:(NSString *)dtfomatter
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = dtfomatter;
+    NSDate *theDate = [formatter dateFromString:date];
+    NSTimeInterval time = [theDate timeIntervalSince1970];
+    return [self dateAgoFromCommentWithDate:(NSInteger)time];
 }
 
 + (NSString *)dateStrWithDateStr:(NSString *)dateString formate:(NSString *)formate {
@@ -87,15 +141,14 @@
         //  将需要转换的时间转换成 NSDate 对象
         NSDate * needFormatDate = [dateFormatter dateFromString:dateString];
         //  取当前时间和转换时间两个日期对象的时间间隔
-        //  这里的NSTimeInterval 并不是对象，是基本型，其实是double类型，是由c定义的:  typedef double NSTimeInterval;
         NSTimeInterval time = [nowDate timeIntervalSinceDate:needFormatDate];
-        //获取当天到0点的时间戳
+        //今天0点到现在的时间戳
         [dateFormatter setDateFormat:@"yyyy-MM-dd"];
         NSDate *todayDate = [dateFormatter dateFromString:[dateFormatter stringFromDate:nowDate]];
         NSTimeInterval nowTime = [nowDate timeIntervalSinceDate:todayDate];
         // 再然后，把间隔的秒数折算成天数和小时数：
         NSString *dateStr = @"";
-         if(time <= 60 * 60 * 24 + nowTime) {   // 在近两天内的
+        if (time <= 60 * 60 * 24 + nowTime) {   // 在近两天内的
             [dateFormatter setDateFormat:@"yyyy-MM-dd"];
             NSString * need_yMd = [dateFormatter stringFromDate:needFormatDate];
             NSString *now_yMd = [dateFormatter stringFromDate:nowDate];

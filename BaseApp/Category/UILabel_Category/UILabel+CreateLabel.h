@@ -1,9 +1,9 @@
 //
 //  UILabel+CreateLabel.h
-//  TimeDiary
+//  Lovers
 //
 //  Created by PeiJun on 2017/8/15.
-//  Copyright © 2017年 brt. All rights reserved.
+//  Copyright © 2017年 LeMeng. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -12,7 +12,7 @@
 
 /**
  创建一个label
- 
+
  @param hexString 字体颜色16进制字符串
  @param font 字体
  @param alignment 对齐方式

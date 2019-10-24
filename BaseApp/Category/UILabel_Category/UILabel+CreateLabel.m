@@ -1,9 +1,9 @@
 //
 //  UILabel+CreateLabel.m
-//  TimeDiary
+//  Lovers
 //
 //  Created by PeiJun on 2017/8/15.
-//  Copyright © 2017年 brt. All rights reserved.
+//  Copyright © 2017年 LeMeng. All rights reserved.
 //
 
 #import "UILabel+CreateLabel.h"

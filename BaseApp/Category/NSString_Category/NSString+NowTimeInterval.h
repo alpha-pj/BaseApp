@@ -1,9 +1,9 @@
 //
 //  NSString+NowTimeInterval.h
-//  BaseApp
+//  Lovers
 //
-//  Created by PeiJun on 2018/8/8.
-//  Copyright © 2018年 PeiJun. All rights reserved.
+//  Created by PeiJun on 2019/6/6.
+//  Copyright © 2019 LeMeng. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -38,7 +38,7 @@
  @param format 格式(默认@"yyyy/MM/dd HH:mm:ss"格式)
  @return 时间字符串
  */
-+ (NSString *)getTimeStrWithTimeInterval:(NSTimeInterval)TimeInterval  format:(NSString *)format;
++ (NSString *)getTimeStrWithTimeInterval:(NSTimeInterval)timeInterval  format:(NSString *)format;
 
 
 /**
@@ -78,4 +78,11 @@
     yyyy/MM/dd HH:mm  -->   yyyyMMddHHmm
  */
 - (NSString *)timeStyle;
+
+
+/**
+ 将秒转化（eg：13:14）格式
+ */
++ (NSString *)getTimeWithSeconds:(CGFloat)seconds;
+
 @end

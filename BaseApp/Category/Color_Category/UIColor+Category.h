@@ -1,9 +1,9 @@
 //
 //  UIColor+Category.h
-//  BaseApp
+//  Lovers
 //
-//  Created by PeiJun on 2018/8/8.
-//  Copyright © 2018年 PeiJun. All rights reserved.
+//  Created by PeiJun on 2019/6/6.
+//  Copyright © 2019 LeMeng. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

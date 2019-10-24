@@ -20,7 +20,7 @@ typedef NS_ENUM(NSUInteger, ButtonEdgeInsetsStyle) {
 
 /**
  设置button的titleLabel和imageView的布局样式、间距及是否保留已设置的EdgeInsets
- 
+
  @param style titleLabel和imageView的布局样式
  @param space titleLabel和imageView的间距
  @param isRetain 是否保留已设置的EdgeInsets
