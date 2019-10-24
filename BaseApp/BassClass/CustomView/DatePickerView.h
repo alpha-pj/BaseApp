@@ -39,9 +39,15 @@ typedef void(^sureBlock)(NSString *date, NSString *lunarDate, BOOL isLunar);
 
 @property(nonatomic, assign) BOOL isLunar;        //是否为农历模式(需在currentDate之前设置)
 @property(nonatomic, strong) NSDate *currentDate;     //设置当前时间
-@property (nonatomic, copy) NSString *title;
 @property (nonatomic, assign) DatePickerTopType topType;  //默认DatePickerTopTypeSegment
 @property (nonatomic, copy) sureBlock sureBlock;
+
+//让父类初始化不可用
+- (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
+- (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
+//自定义初始化函数
+- (instancetype)initWithCurrentDate:(NSDate *)currentDate isLunar:(BOOL)isLunar NS_DESIGNATED_INITIALIZER;
 
 /**
   隐藏

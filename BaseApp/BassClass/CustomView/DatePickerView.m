@@ -41,6 +41,7 @@
 @property (nonatomic, strong) NSDictionary *leapDic;
 @property (nonatomic, strong) ZSegmentedView *typeSegmentedView;
 
+@property (nonatomic, copy) NSString *title;
 @property(nonatomic, strong) UILabel *titleL;        //中心标题
 
 @property (nonatomic,strong) NSString *dateString;  //阳历日期
@@ -50,10 +51,14 @@
 
 @implementation DatePickerView
 
-- (instancetype)initWithFrame:(CGRect)frame{
-    self = [super initWithFrame:frame];
-    if (self)  {
+- (instancetype)initWithCurrentDate:(NSDate *)currentDate isLunar:(BOOL)isLunar {
+    if (self = [super initWithFrame:CGRectZero]) {
         [self setViewStatus];
+        //子视图初始化后赋值
+        self.isLunar = isLunar;
+        if (currentDate) {
+            self.currentDate = currentDate;
+        }
     }
     return self;
 }
@@ -611,7 +616,7 @@
     unsigned unitFlags =  NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
     NSDateComponents *localeComp = [localeCalendar components:unitFlags fromDate:date];
     //农历以公元前2697年为第一个甲子年，60年一个周期
-    NSString *y_str = [NSString stringWithFormat:@"%ld", -JiaZiYear + localeComp.era * 60 + localeComp.year];
+    NSString *y_str = [NSString stringWithFormat:@"%ld", - JiaZiYear + localeComp.era * 60 + localeComp.year];
     NSString *m_str = [chineseMonths safeObjectAtIndex:localeComp.month - 1];
     NSString *d_str = [chineseDays safeObjectAtIndex:localeComp.day - 1];
     NSString *chineseCal_str = [NSString stringWithFormat:@"%@年 %@ %@",y_str, m_str, d_str];
