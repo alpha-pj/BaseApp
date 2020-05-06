@@ -13,7 +13,7 @@
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 //pod
 #import <Masonry/Masonry.h>
-#import <YYWebImage/YYWebImage.h>
+//#import <YYWebImage/YYWebImage.h>
 #import "SDImageWebPCoder.h"
 #import "CYLTabBarController.h"
 
@@ -43,6 +43,7 @@
 #import "UILabel+YBAttributeTextTapAction.h"
 #import "UIButton+ImageTitleSpacing.h"
 #import "UIView+Shadow.h"
+#import "AppDelegate+Method.h"
 #import "UIView+CornerRadius.h"
 #import "UIImage+UrlReferer.h"
 

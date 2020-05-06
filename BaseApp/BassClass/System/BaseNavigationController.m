@@ -19,9 +19,9 @@
     // Do any additional setup after loading the view.
     //标题颜色和背景
     [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor],NSFontAttributeName:[UIFont boldSystemFontOfSize:18]}];
-    [self.navigationBar setBackgroundImage:[YYImage yy_imageWithColor:[UIColor whiteColor]] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
     [self.navigationBar setTintColor:[UIColor blackColor]];
-    
+    self.navigationBar.translucent = NO;
     UIBarButtonItem *item = [UIBarButtonItem appearance];
     [item setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} forState:UIControlStateNormal];
 }

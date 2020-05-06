@@ -33,7 +33,7 @@
                                       success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
                                       failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
     //AFN管理者调用get请求方法
-    NSURLSessionDataTask *task = [[BaseNetWork shareAFNManager] GET:url parameters:parameters progress:^(NSProgress *downloadProgress) {
+    NSURLSessionDataTask *task = [[BaseNetWork shareAFNManager] GET:url parameters:parameters headers:nil progress:^(NSProgress *downloadProgress) {
         //返回请求返回进度
         if (progress) {
             progress(downloadProgress);
@@ -58,7 +58,7 @@
                                        success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
                                        failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
     //AFN管理者调用post请求方法
-    NSURLSessionDataTask *task = [[BaseNetWork shareAFNManager] POST:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+    NSURLSessionDataTask *task = [[BaseNetWork shareAFNManager] POST:url parameters:parameters headers:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         //返回请求返回进度
         if (progress) {
             progress(downloadProgress);

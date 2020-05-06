@@ -12,4 +12,6 @@
 #define AppText_cancel              @"取消"
 #define AppText_confirm             @"确定"
 
+#define AppText_complete            @"完成"
+
 #endif /* AppTextFile_h */

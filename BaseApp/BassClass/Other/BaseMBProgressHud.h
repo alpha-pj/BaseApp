@@ -52,17 +52,25 @@ typedef NS_ENUM(NSUInteger, PositionType) {
 
 
 /**
- 显示加载中
-
+ 显示转圈
+ 
  @param view 转圈的父视图
  */
-+ (void)showMBHudWithView:(UIView *)view;
++ (void)showLoadingHudWithView:(UIView *)view;
 
 /**
- 隐藏加载中
+ 显示转圈并提示文字
+ 
+ @param view 提示文字
+ @param text 转圈的父视图
+ */
++ (void)showLoadingHudWithView:(UIView *)view text:(NSString *)text;
 
+/**
+ 隐藏转圈
+ 
  @param view 转圈的父视图
  */
-+ (void)hideMBHudWithView:(UIView *)view;
++ (void)hideLoadingHudWithView:(UIView *)view;
 
 @end

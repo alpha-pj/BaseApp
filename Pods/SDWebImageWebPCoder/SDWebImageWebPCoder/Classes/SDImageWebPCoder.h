@@ -6,8 +6,11 @@
  * file that was distributed with this source code.
  */
 
-#import <Foundation/Foundation.h>
-#import <SDWebImage/SDImageCoder.h>
+#if __has_include(<SDWebImage/SDWebImage.h>)
+#import <SDWebImage/SDWebImage.h>
+#else
+@import SDWebImage;
+#endif
 
 /**
  Built in coder that supports WebP and animated WebP

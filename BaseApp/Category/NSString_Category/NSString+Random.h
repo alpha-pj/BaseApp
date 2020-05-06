@@ -14,7 +14,9 @@
 
 + (NSString *)getRandomName;
 
-+ (NSString *)getRandomNameWithTotalCount:(int)count;
++ (NSString *)getRandomNameWithTotalCount:(NSInteger)count;
+
++ (NSString *)getLowerCaseRandomNameWithTotalCount:(NSInteger)count;
 
 + (NSString *)getRandomImageName;
 

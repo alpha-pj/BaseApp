@@ -10,6 +10,7 @@
 #define LocalMacro_h
 
 //图片referer
+#define DefaultReferer @"http://cpic.njlemeng.com/"
 #define ImageReferer @"image_referer"
 
 #endif /* LocalMacro_h */

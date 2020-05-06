@@ -124,37 +124,37 @@
     self.msgLabel = msgLabel;
     
     //确定
-    UIButton *okButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    okButton.frame = CGRectMake(self.containerView.width / 2.0f, self.containerView.height - 44 * KWidthRate, self.containerView.width / 2.0f, 44 * KWidthRate);
-    [okButton setBackgroundImage:[YYImage yy_imageWithColor:[UIColor colorWithHexString:@"#F7F7F7"]] forState:UIControlStateNormal];
-    [okButton setBackgroundImage:[YYImage yy_imageWithColor:[UIColor colorWithHexString:@"#e5e5e5"]] forState:UIControlStateHighlighted];
-    [okButton setTitleColor:[UIColor colorWithHexString:@"#FF77B4"] forState:UIControlStateNormal];
-    okButton.titleLabel.font = [UIFont fontWithName:FontName_Bold size:15 * kMinRate];
-    [okButton addTarget:self action:@selector(sureAction) forControlEvents:UIControlEventTouchUpInside];
-    [self.containerView addSubview:okButton];
-    self.sureButton = okButton;
-    //取消
-    UIButton *cancleButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    cancleButton.frame = CGRectMake(0, self.containerView.height - 44 * KWidthRate, self.containerView.width / 2.0f, 44 * KWidthRate);
-    [cancleButton setBackgroundImage:[YYImage yy_imageWithColor:[UIColor colorWithHexString:@"#F7F7F7"]] forState:UIControlStateNormal];
-    [cancleButton setBackgroundImage:[YYImage yy_imageWithColor:[UIColor colorWithHexString:@"#e5e5e5"]] forState:UIControlStateHighlighted];
-    [cancleButton setTitleColor:[UIColor colorWithHexString:@"#737373"] forState:UIControlStateNormal];
-    cancleButton.titleLabel.font = AppFontNormal(15 * kMinRate);;
-    [cancleButton addTarget:self action:@selector(cancelAction) forControlEvents:UIControlEventTouchUpInside];
-    [self.containerView addSubview:cancleButton];
-    self.cancelButton = cancleButton;
-    
-    //横线
-    UIView *hline = [[UIView alloc] initWithFrame:CGRectMake(0, okButton.y - 0.5, self.containerView.width, 0.5)];
-    hline.backgroundColor = [UIColor colorWithHexString:@"#dddddd"];
-    [self.containerView addSubview:hline];
-    self.hline = hline;
-    //竖线
-    UIView *vline = [[UIView alloc] initWithFrame:CGRectMake(self.containerView.width / 2.0f, 0, 0.5, okButton.height)];
-    vline.centerY = okButton.centerY;
-    vline.backgroundColor = [UIColor colorWithHexString:@"#dddddd"];
-    [self.containerView addSubview:vline];
-    self.vLine = vline;
+//    UIButton *okButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    okButton.frame = CGRectMake(self.containerView.width / 2.0f, self.containerView.height - 44 * KWidthRate, self.containerView.width / 2.0f, 44 * KWidthRate);
+//    [okButton setBackgroundImage:[YYImage yy_imageWithColor:[UIColor colorWithHexString:@"#F7F7F7"]] forState:UIControlStateNormal];
+//    [okButton setBackgroundImage:[YYImage yy_imageWithColor:[UIColor colorWithHexString:@"#e5e5e5"]] forState:UIControlStateHighlighted];
+//    [okButton setTitleColor:[UIColor colorWithHexString:@"#FF77B4"] forState:UIControlStateNormal];
+//    okButton.titleLabel.font = [UIFont fontWithName:FontName_Bold size:15 * kMinRate];
+//    [okButton addTarget:self action:@selector(sureAction) forControlEvents:UIControlEventTouchUpInside];
+//    [self.containerView addSubview:okButton];
+//    self.sureButton = okButton;
+//    //取消
+//    UIButton *cancleButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    cancleButton.frame = CGRectMake(0, self.containerView.height - 44 * KWidthRate, self.containerView.width / 2.0f, 44 * KWidthRate);
+//    [cancleButton setBackgroundImage:[YYImage yy_imageWithColor:[UIColor colorWithHexString:@"#F7F7F7"]] forState:UIControlStateNormal];
+//    [cancleButton setBackgroundImage:[YYImage yy_imageWithColor:[UIColor colorWithHexString:@"#e5e5e5"]] forState:UIControlStateHighlighted];
+//    [cancleButton setTitleColor:[UIColor colorWithHexString:@"#737373"] forState:UIControlStateNormal];
+//    cancleButton.titleLabel.font = AppFontNormal(15 * kMinRate);;
+//    [cancleButton addTarget:self action:@selector(cancelAction) forControlEvents:UIControlEventTouchUpInside];
+//    [self.containerView addSubview:cancleButton];
+//    self.cancelButton = cancleButton;
+//    
+//    //横线
+//    UIView *hline = [[UIView alloc] initWithFrame:CGRectMake(0, okButton.y - 0.5, self.containerView.width, 0.5)];
+//    hline.backgroundColor = [UIColor colorWithHexString:@"#dddddd"];
+//    [self.containerView addSubview:hline];
+//    self.hline = hline;
+//    //竖线
+//    UIView *vline = [[UIView alloc] initWithFrame:CGRectMake(self.containerView.width / 2.0f, 0, 0.5, okButton.height)];
+//    vline.centerY = okButton.centerY;
+//    vline.backgroundColor = [UIColor colorWithHexString:@"#dddddd"];
+//    [self.containerView addSubview:vline];
+//    self.vLine = vline;
 }
 
 - (void)animateShowAlertview

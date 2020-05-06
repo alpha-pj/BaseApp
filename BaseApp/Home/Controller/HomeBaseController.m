@@ -7,8 +7,11 @@
 //
 
 #import "HomeBaseController.h"
+#import "WeatherModel.h"
 
 @interface HomeBaseController ()
+
+@property (nonatomic, strong) NSURLSessionDataTask *task;
 
 @end
 
@@ -17,19 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor blueColor];
-    self.navigationItem.title = @"YYWebImage";
-    UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
-    imageV.backgroundColor = [UIColor whiteColor];
-    //YY测试webp
-    [imageV yy_setImageWithURL:[NSURL URLWithString:@"http://isparta.github.io/compare-webp/image/png_webp/webp_lossy75/2.webp"] options:(YYWebImageOptionProgressive)];
-    [self.view addSubview:imageV];
-    //YY测试gif
-    NSURL *gitUrl = [NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553143850117&di=7edda36c804d73229796380c0f1c6309&imgtype=0&src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20160912%2Fcfa771329ad9495381f335b7c4def907_th.gif"];
-    YYAnimatedImageView *animateImageV = [[YYAnimatedImageView alloc] initWithFrame:CGRectMake(100, 250, 100, 100)];
-    animateImageV.backgroundColor = [UIColor whiteColor];
-    animateImageV.yy_imageURL = gitUrl;
-    [self.view addSubview:animateImageV];
+    self.view.backgroundColor = [UIColor brownColor];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.backgroundColor = [UIColor greenColor];
@@ -37,26 +28,49 @@
     [self.view addSubview:button];
     
     [button mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(self.view);
-        make.top.mas_equalTo(400);
+        make.centerX.centerY.mas_equalTo(self.view);
         make.width.height.mas_equalTo(50);
-    }];
-    
-    IQTextView *textView = [[IQTextView alloc] init];
-    textView.font = [UIFont systemFontOfSize:10];
-    textView.placeholder = @"IQKeyboardManager";
-    [self.view addSubview:textView];
-    
-    [textView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(self.view);
-        make.top.mas_equalTo(20);
-        make.width.mas_equalTo(300);
-        make.height.mas_equalTo(30);
     }];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
 - (void)buttonAction {
-    [BaseMBProgressHud showMBHudWithText:@"YYWebImage加载Webp和Gif" view:self.view];
+    if (self.task) {
+        if (self.task.state != NSURLSessionTaskStateCompleted && self.task.state != NSURLSessionTaskStateCanceling) {
+            [self.task cancel];
+            self.task = nil;
+            [BaseMBProgressHud showMBHudWithText:@"取消请求" view:self.view];
+        }
+    } else {
+        [self weatherGet];
+    }
+}
+
+- (void)weatherGet {
+    self.task = [BaseRequest getWeatherWithCity:@"南京" progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *data = responseObject[@"data"];
+            if ([data isKindOfClass:[NSDictionary class]]) {
+                WeatherModel *model = [[WeatherModel alloc] init];
+                [model setValuesForKeysWithDictionary:data];
+                UILabel *label = [[UILabel alloc] init];
+                label.font = [UIFont boldSystemFontOfSize:18];
+                label.numberOfLines = 0;
+                label.text = [NSString stringWithFormat:@"城市：%@\n时间：%@\n当前温度：%@℃\n整体温度：%@，%@\n天气状况：%@\n风向：%@\n温馨提示：%@\n", model.city, [[model.forecast firstObject] date], model.wendu, [[model.forecast firstObject] low], [[model.forecast firstObject] high], [[model.forecast firstObject] type], [[model.forecast firstObject] fengxiang], model.ganmao];
+                [self.view addSubview:label];
+                [label mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.width.mas_lessThanOrEqualTo(ScreenWidth - 20);
+                    make.height.mas_greaterThanOrEqualTo(0);
+                    make.left.top.mas_equalTo(10);
+                }];
+            }
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 
 /*

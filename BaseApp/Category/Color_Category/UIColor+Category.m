@@ -63,7 +63,7 @@
 }
 //颜色转16进制
 + (NSString *)hexFromUIColor:(UIColor *)color {
-    if ([color isEqual:[UIColor clearColor]]) {
+    if (![color isKindOfClass:[UIColor class]] || [color isEqual:[UIColor clearColor]]) {
         return @"";
     }
     if (CGColorGetNumberOfComponents(color.CGColor) < 4) {

@@ -97,21 +97,45 @@
 
 /*****************/
 
-#pragma mark 显示加载中
-+ (void)showMBHudWithView:(UIView *)view {
+#pragma mark 显示转圈
++ (void)showLoadingHudWithView:(UIView *)view {
     if (!view) {
         view = [UIApplication sharedApplication].keyWindow;
     }
-    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:view];
-    hud.removeFromSuperViewOnHide = YES;
-    hud.mode = MBProgressHUDModeIndeterminate;
-    hud.animationType = MBProgressHUDAnimationZoom;
-    [view addSubview:hud];
-    [hud showAnimated:YES];
+    MBProgressHUD *hud = [MBProgressHUD HUDForView:view];
+    if (!hud) {
+        hud = [[MBProgressHUD alloc] initWithView:view];
+        hud.removeFromSuperViewOnHide = YES;
+        hud.mode = MBProgressHUDModeIndeterminate;
+        hud.animationType = MBProgressHUDAnimationZoom;
+        [view addSubview:hud];
+        [hud showAnimated:YES];
+    }
 }
 
-#pragma mark 隐藏加载中
-+ (void)hideMBHudWithView:(UIView *)view {
+#pragma mark 显示转圈并提示文字
++ (void)showLoadingHudWithView:(UIView *)view text:(NSString *)text {
+    if (!view) {
+        view = [UIApplication sharedApplication].keyWindow;
+    }
+    MBProgressHUD *hud = [MBProgressHUD HUDForView:view];
+    if (!hud) {
+        hud = [[MBProgressHUD alloc] initWithView:view];
+        hud.removeFromSuperViewOnHide = YES;
+        hud.mode = MBProgressHUDModeIndeterminate;
+        hud.animationType = MBProgressHUDAnimationZoom;
+        [view addSubview:hud];
+        [hud showAnimated:YES];
+    }
+    if ([text isKindOfClass:[NSString class]] && text.length > 0) {
+        hud.label.text = text;
+        hud.label.numberOfLines = 0;
+        hud.label.font = AppFontNormal(15);
+    }
+}
+
+#pragma mark 隐藏转圈
++ (void)hideLoadingHudWithView:(UIView *)view {
     if (!view) {
         view = [UIApplication sharedApplication].keyWindow;
     }

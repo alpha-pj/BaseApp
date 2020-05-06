@@ -10,6 +10,8 @@
 #import "UIView+CYLBadgeExtention.h"
 #import "CYLBadgeProtocol.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface UIBarButtonItem (CYLBadgeExtention)<CYLBadgeProtocol>
 - (BOOL)cyl_isShowBadge;
 
@@ -22,7 +24,7 @@
  *  cyl_showBadge
  *
  *  @param value String value, default is `nil`. if value equal @"" means red dot style.
- *  @param animationType
+ *  @param animationType animationType
  */
 - (void)cyl_showBadgeValue:(NSString *)value
          animationType:(CYLBadgeAnimationType)animationType;
@@ -37,6 +39,10 @@
  *  make bage(if existing) not hiden
  */
 - (void)cyl_resumeBadge;
+
 - (BOOL)cyl_isPauseBadge;
 
 @end
+
+NS_ASSUME_NONNULL_END
+

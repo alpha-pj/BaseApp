@@ -35,6 +35,9 @@
 //宽比高比较大的一个
 #define kMaxRate (kHeightRate < KWidthRate ? KWidthRate : kHeightRate)
 
+//宽比高比较小的一个且不大于1
+#define kWHMinRate (kMinRate > 1 ? 1 : kMinRate)
+
 // 自定义通知格式
 #define BasePostNotif(Name,Object) [[NSNotificationCenter defaultCenter] postNotificationName:Name object:Object]
 #define BaseAddNotif(Observe,Method,Name,Object) [[NSNotificationCenter defaultCenter] addObserver:Observe selector:Method name:Name object:Object]

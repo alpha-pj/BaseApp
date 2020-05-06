@@ -32,6 +32,7 @@
         [tabbar setBackgroundImage:[UIImage new]];
         [tabbar setShadowImage:[UIImage new]];
         [tabbar setTintColor:[UIColor whiteColor]];
+        tabbar.translucent = NO;
     }
     return self;
 }
@@ -56,7 +57,7 @@
 
 - (NSArray *)tabBarItemsAttributes {
     NSDictionary *dict1 = @{
-                            CYLTabBarItemTitle : @"YY",
+                            CYLTabBarItemTitle : @"Home",
                             CYLTabBarItemImage : @"tabbar_home_normal",
                             CYLTabBarItemSelectedImage : @"tabbar_home_selected",
                             };

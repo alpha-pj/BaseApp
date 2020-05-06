@@ -74,22 +74,24 @@
  *  @return view
  */
 - (UIView *)cyl_getActualBadgeSuperView {
-    // 1.get UITabbarButtion
-    UIControl *cyl_tabButton  = [self cyl_tabButton];
-    //    return cyl_tabButton;
+    UIControl *tabButton = [self cyl_tabButton];
     // badge label will be added onto imageView
-    return [cyl_tabButton cyl_tabImageView];
-}
-
-- (UIView *)cyl_find:(UIView *)view firstSubviewWithClass:(Class)cls {
-    __block UIView *targetView = nil;
-    [view.subviews enumerateObjectsUsingBlock:^(UIView *subview, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([subview isKindOfClass:cls]) {
-            targetView = subview;
-            *stop = YES;
+    UIImageView *tabImageView = [tabButton cyl_tabImageView];
+    UIView *lottieAnimationView = (UIView *)tabButton.cyl_lottieAnimationView ;
+    UIView *actualBadgeSuperView = tabImageView;
+    
+    do {
+        if (tabImageView && !tabImageView.cyl_isInvisiable) {
+            actualBadgeSuperView = tabImageView;
+            break;
         }
-    }];
-    return targetView;
+        if (lottieAnimationView && !lottieAnimationView.cyl_isInvisiable) {
+            actualBadgeSuperView = lottieAnimationView;
+            break;
+        }
+    } while (NO);
+    [lottieAnimationView setClipsToBounds:NO];
+    return actualBadgeSuperView;
 }
 
 #pragma mark -- setter/getter
@@ -171,6 +173,14 @@
 
 - (void)cyl_setBadgeRadius:(CGFloat)badgeRadius {
     [kActualView cyl_setBadgeRadius:badgeRadius];
+}
+
+- (CGFloat)cyl_badgeCornerRadius {
+    return [kActualView cyl_badgeCornerRadius];
+}
+
+- (void)cyl_setBadgeCornerRadius:(CGFloat)cyl_badgeCornerRadius {
+    [kActualView cyl_setBadgeCornerRadius:cyl_badgeCornerRadius];
 }
 
 #pragma mark - private method

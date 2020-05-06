@@ -29,18 +29,18 @@
     [self setTabBarItem:homeNavi.tabBarItem
                   title:@"首页"
               titleFont:[UIFont systemFontOfSize:13.0f]
-          selectedImage:[YYImage yy_imageWithColor:[UIColor redColor] size:CGSizeMake(30, 30)]
+          selectedImage:nil
      selectedTitleColor:[UIColor redColor]
-            normalImage:[YYImage yy_imageWithColor:[UIColor grayColor] size:CGSizeMake(30, 30)]
+            normalImage:nil
        normalTitleColor:[UIColor grayColor]];
     
     
     [self setTabBarItem:myNaiv.tabBarItem
                   title:@"我的"
               titleFont:[UIFont systemFontOfSize:13.0f]
-          selectedImage:[YYImage yy_imageWithColor:[UIColor redColor] size:CGSizeMake(30, 30)]
+          selectedImage:nil
      selectedTitleColor:[UIColor redColor]
-            normalImage:[YYImage yy_imageWithColor:[UIColor grayColor] size:CGSizeMake(30, 30)]
+            normalImage:nil
        normalTitleColor:[UIColor grayColor]];
     
     // 把子控制器添加到UITabBarController

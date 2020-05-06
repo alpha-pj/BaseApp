@@ -8,12 +8,14 @@
 
 #import "NSString+Random.h"
 #import "NSString+NowTimeInterval.h"
+
 @implementation NSString (Random)
 
 + (NSString *)getRandomNum
 {
     int num = (arc4random() % 1000000);
     NSString *randomNumber = [NSString stringWithFormat:@"%.6d",num];
+    NSLog(@"----%@----",randomNumber);
     return randomNumber;
 }
 
@@ -24,7 +26,7 @@
     NSMutableString *str = [NSMutableString string];
     for (int i = 0; i < count; i++)
     {
-        NSInteger loc = arc4random() % 35;
+        NSInteger loc = arc4random() % source.length;
         NSString *sub = [source substringWithRange:NSMakeRange(loc, 1)];
         [str appendString:sub];
     }
@@ -32,13 +34,26 @@
 }
 
 
-+ (NSString *)getRandomNameWithTotalCount:(int)count
++ (NSString *)getRandomNameWithTotalCount:(NSInteger)count
 {
     NSString *source = @"1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     NSMutableString *str = [NSMutableString string];
     for (int i = 0; i < count; i++)
     {
-        NSInteger loc = arc4random() % 61;
+        NSInteger loc = arc4random() % source.length;
+        NSString *sub = [source substringWithRange:NSMakeRange(loc, 1)];
+        [str appendString:sub];
+    }
+    return str;
+}
+
++ (NSString *)getLowerCaseRandomNameWithTotalCount:(NSInteger)count
+{
+    NSString *source = @"1234567890abcdefghijklmnopqrstuvwxyz";
+    NSMutableString *str = [NSMutableString string];
+    for (int i = 0; i < count; i++)
+    {
+        NSInteger loc = arc4random() % source.length;
         NSString *sub = [source substringWithRange:NSMakeRange(loc, 1)];
         [str appendString:sub];
     }
@@ -47,7 +62,8 @@
 
 + (NSString *)getRandomImageName
 {
-   return  [NSString stringWithFormat:@"%@_%@",[NSString nwTimeGet], [NSString getRandomNameWithTotalCount:16]];
+    return  [NSString stringWithFormat:@"%@_%@",[NSString nwTimeGet], [NSString getRandomNameWithTotalCount:16]];
 }
+
 
 @end
